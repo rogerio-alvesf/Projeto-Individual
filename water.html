@@ -22,5 +22,52 @@
             <a href="">CADASTRO</a>
         </div>
     </header>
+    <div class="banner">
+        <h1>Saiba qual a quantidade ideal de água para seu corpo</h1>
+        <img src="images/glass-of-water.jpg">
+        <p>Data de publicação: 30 de Outubro de 2021</p>
+    </div>
+    <main>
+        <article>
+            <section>
+                <p>Acredita-se que todos os adultos precisam beber cerca de 2 litros de água por dia,
+                no entanto essa quantidade é uma estimativa. Isso porque a quantidade exata de água
+                que cada pessoa necessita ingerir diariamente varia de acordo com o peso, idade,
+                estação do ano e outros fatores, como prática de atividade física, por exemplo,
+                já que durante o exercício se perde mais líquidos através do suor, sendo necessário consumir mais água.
+                <br>
+                A água corresponde a cerca de 60 a 70% da composição corporal total e é fundamental para o bom funcionamento do organismo, por isso a forma mais adequada para saber qual a necessidade diária de água é através de um cálculo que leva em consideração o peso e a idade da pessoa.
+                </p>
+            </section>
+            <section>
+                <h2>Veja um tabela que corresponde a quantidade de água (em ml) que a pessoa deve tomar de acordo com a idade</h2>
+                <table>
+                    <tr>
+                        <th>Adultos</th>
+                        <td>Jovem ativo até os 17 anos</td>
+                        <td>18 a 55 anos</td>
+                        <td>55 a 65 anos</td>
+                        <td>Mais de 66 anos</td>
+                    </tr>
+                    <tr>
+                        <th>Quantidade de água por kg</th>
+                        <td>40 ml por cada kg</td>
+                        <td>35 ml por cada kg</td>
+                        <td>30 ml por cada kg</td>
+                        <td>25 ml  por cada kg</td>
+                    </tr>
+                </table>
+            </section>
+            <section>
+                <h2>Utilize nossa calculador para fazer essa conta por você</h2>
+                <p>Quantos anos você tem: <input id="in_years_old" placeholder="IDADE"><br>
+                Qual o seu peso(em kg): <input id="in_weight" placeholder="PESO"><br>
+                <button onclick="calculate()">CALCULAR</button>
+                </p>
+                <p id="p_result" class="result"></p>
+            </section>
+        </article>
+    </main>
 </body>
+<script src="scripts/water.js"></script>
 </html>
