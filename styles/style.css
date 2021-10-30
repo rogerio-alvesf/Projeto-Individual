@@ -87,7 +87,7 @@ header .container :hover{
 }
 
 article{
-    height: 170vh;
+    height: 182vh;
 }
 
 article .boxes{
@@ -317,4 +317,46 @@ article .box .container .sport2 a{
     font-weight: 800;
     padding: 1rem;
     text-shadow: -0.1rem 0.1rem #000000;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 18vh;
+    background-color: #005EBD;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+footer .social-networks{
+    height: 60%;
+    width: 45%;
+    display: flex;
+    justify-self: flex-end;
+    flex-wrap: wrap;
+}
+
+footer .social-networks span{
+    margin-right: 5%;
+    margin-top: 2%;
+}
+
+footer .social-networks div{
+    display: flex;
+    align-items: center;
+    height: 90%;
+    width: 25%;
+}
+
+footer .social-networks div img{
+    display: flex;
+    margin-left: 5%;
+    width: 15%;
+    height: 30%;
+}
+
+footer .social-networks div a{
+    color: #FFFFFF;
 }
