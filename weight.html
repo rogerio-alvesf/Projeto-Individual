@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubra se você está no peso ideal</title>
+    <link rel="stylesheet" href="styles/weight.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="">SOBRE</a>
+            <a href="#mind">MENTE</a>
+            <a href="#food">ALIMENTAÇÃO</a>
+            <a href="#sport">ESPORTES</a>
+        </nav>
+        <h1>Saúde & Bem Estar</h1>
+        <div class="container">
+            <a href="">LOGIN</a>
+            <a href="">CADASTRO</a>
+        </div>
+    </header>
+    <div class="banner">
+        <h1>Descubra se você está no peso ideal</h1>
+        <img src="images/person-measuring-himself.jpg">
+        <p>Data de publicação: 30 de Outubro de 2021</p>
+    </div>
+    <article>
+        <section>
+            <h2>Como é calculado o peso ideal?</h2>
+            <p>O peso ideal é calculado de acordo com o IMC (Índice de Massa Corporal), que é calcula
+                do de através de duas variáveis: o peso e a altura. Assim, sabendo que um adulto saudá
+                vel deve estar num intervalo de IMC entre 18,5 - 24,9, e sabendo o peso de cada pessoa,
+                 é possível descobrir o intervalo de peso ideal.</p>
+        </section>
+        <section>
+            <h2>Como calcular o IMC</h2>
+            <p>O cálculo do IMC deve ser feito usando a seguinte fórmula matemática: Peso ÷ (altura x 
+                altura). Mas você também pode saber se está dentro do peso ideal utilizando a nossa cal
+                culadora online, apenas inserindo seus dados:</p>
+        </section>
+        <section>
+            <h2>Utilize nossa calculador de IMC para fazer essa conta por você</h2>
+            <fieldset>
+                <legend>IMC</legend>
+                <label>
+                    Sexo
+                    <button>Mulher</button>
+                    <button>Homem</button>
+                </label>
+                <br>
+                <label>
+                    Idade
+                    <input id="in_years_old">
+                    <span>anos</span>
+                </label>
+                <br>
+                <label>
+                    Altura
+                    <input id="in_years_old">
+                    <span>cm</span>
+                </label>
+                <br>
+                <label>
+                    Peso
+                    <input id="in_weight">
+                    <span>Kg</span>
+                </label>
+                <br>
+                <button onclick="calculate()">Calcular IMC</button>
+            </fieldset>
+        </section>
+    </article>
+</body>
+</html>
