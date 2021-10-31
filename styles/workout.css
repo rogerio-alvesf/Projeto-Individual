@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif, Arial;
+}
+
+header{
+    height: 10vh;
+    width: 100%;
+    background-color: #ABABAB;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.2rem solid #26998E;
+}
+
+header a{
+    color: #303030;
+    margin-left: 02%;
+    margin-right: 02%;
+}
+
+header nav{
+    display: flex;
+    width: 30vw;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 05%;
+}
+
+header nav :hover{
+    color: #005EBD;
+    font-weight: bold;
+}
+
+header h1{
+    margin-right: 10%;
+    display: flex;
+    color: #26998E;
+}
+
+header .container{
+    margin-right: 05%;
+    width: 12%;
+    display: flex;
+    justify-content: space-between;
+}
+
+header .container :hover{
+    color: #005EBD;
+    font-weight: bold;
+}
+
+.banner{
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;;
+}
+
+.banner h1{
+    position: absolute;
+    left: 10%;
+    color: #FFFFFF;
+    font-size: 2.5rem;
+    animation: moveBanner 1.5s 0.9s forwards;
+    text-shadow: -0.1rem 0.1rem #000000;
+}
+
+.banner p{
+    position: absolute;
+    color: #FFFFFF;
+    left: 10%;
+    top: 80%;
+    font-size: 1rem;
+}
+
+.banner img{
+    height: 100%;
+    width: 100vw;
+    padding: 2rem;
+}
