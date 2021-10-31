@@ -46,32 +46,36 @@
             <fieldset>
                 <legend>IMC</legend>
                 <label>
-                    Sexo
-                    <button>Mulher</button>
-                    <button>Homem</button>
-                </label>
-                <br>
-                <label>
-                    Idade
-                    <input id="in_years_old">
-                    <span>anos</span>
-                </label>
-                <br>
-                <label>
-                    Altura
-                    <input id="in_years_old">
+                    Altura:
+                    <input id="in_height" placeholder="Altura (m)" onkeyup="point()" maxlength="4" minlength="0">
                     <span>cm</span>
                 </label>
                 <br>
                 <label>
-                    Peso
-                    <input id="in_weight">
+                    Peso:
+                    <input id="in_weight" placeholder="Peso (kg)">
                     <span>Kg</span>
                 </label>
                 <br>
                 <button onclick="calculate()">Calcular IMC</button>
             </fieldset>
+            <p id="p_result" class="result"></p>
         </section>
     </article>
+    <footer>
+        <p>Todos os direitos reservados &copy;Rogerio Alves Filho</p>
+        <div class="social-networks"><span>Redes Sociais:</span>
+            <div>
+                <a href="https://github.com/rogerio-alvesf" target="_blank"><img src="images/icon-github.png" alt="">GitHub</a>
+            </div>
+            <div>
+                <a href = "mailto:rogeriobusiness@protonmail.com" target="_blank"><img src="images/icon-protonmail.png" alt="">Protonmail</a>
+            </div>
+            <div>
+                <a href="https://www.linkedin.com/in/rogerio-filho-9034481b1" target="_blank"><img src="images/icon-linkedin.png" alt="">Linkedin</a>
+            </div>
+        </div>
+    </footer>
 </body>
+<script src="scripts/weight.js"></script>
 </html>

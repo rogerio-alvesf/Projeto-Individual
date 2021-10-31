@@ -15,6 +15,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 0.2rem solid #26998E;
 }
 
 header a{
@@ -39,7 +40,7 @@ header nav :hover{
 header h1{
     margin-right: 10%;
     display: flex;
-    color: #06733C;
+    color: #26998E;
 }
 
 header .container{
@@ -106,7 +107,7 @@ article .box{
 
 article h2{
     align-self: flex-start;
-    color: #06733C;
+    color: #26998E;
 }
 
 article .box .container{
@@ -117,10 +118,15 @@ article .box .container{
     background-color: #8A8A8A;
 }
 
+article .box .container :hover{
+    box-shadow: -8px -8px 10px #303030;
+    border: none;
+}
+
 article .box .container .mind1{
     height: 100%;
     width: 100%;
-    background-image: url("../images/people-stretching.jpg");
+    background-image: url("../images/people-stretching-640.jpg");
     background-size: cover;
     color: #FFFFFF;
     cursor: pointer;
@@ -144,7 +150,7 @@ article .box .container .mind1 p{
 }
 
 article .box .container .mind1 a{
-    color: #09BD63;
+    color: #26998E;
     font-weight: 800;
     padding: 1rem;
     text-shadow: -0.1rem 0.1rem #000000;
@@ -153,7 +159,7 @@ article .box .container .mind1 a{
 article .box .container .mind2{
     height: 100%;
     width: 100%;
-    background-image: url("../images/person-sleeping.jpg");
+    background-image: url("../images/person-sleeping-640.jpg");
     background-size: cover;
     color: #FFFFFF;
     cursor: pointer;
@@ -177,7 +183,7 @@ article .box .container .mind2 p{
 }
 
 article .box .container .mind2 a{
-    color: #09BD63;
+    color: #26998E;
     font-weight: 800;
     padding: 1rem;
     text-shadow: -0.1rem 0.1rem #000000;
@@ -186,7 +192,7 @@ article .box .container .mind2 a{
 article .box .container .food1{
     height: 100%;
     width: 100%;
-    background-image: url("../images/glass-of-water.jpg");
+    background-image: url("../images/glass-of-water-640.jpg");
     background-size: cover;
     color: #FFFFFF;
     cursor: pointer;
@@ -196,11 +202,6 @@ article .box .container .food1{
     align-items: center;
     border-radius: 7px;
     transition: 0.2s;
-}
-
-article .box .container :hover{
-    box-shadow: -8px -8px 10px #303030;
-    border: none;
 }
 
 article .box .container .food1 :hover{
@@ -215,7 +216,7 @@ article .box .container .food1 p{
 }
 
 article .box .container .food1 a{
-    color: #09BD63;
+    color: #26998E;
     font-weight: 800;
     padding: 1rem;
     text-shadow: -0.1rem 0.1rem #000000;
@@ -224,7 +225,7 @@ article .box .container .food1 a{
 article .box .container .food2{
     height: 100%;
     width: 100%;
-    background-image: url("../images/breakfast.jpg");
+    background-image: url("../images/breakfast-640.jpg");
     background-size: cover;
     color: #FFFFFF;
     cursor: pointer;
@@ -247,7 +248,7 @@ article .box .container .food2 p{
 }
 
 article .box .container .food2 a{
-    color: #09BD63;
+    color: #26998E;
     font-weight: 800;
     padding: 1rem;
     text-shadow: -0.1rem 0.1rem #000000;
@@ -256,7 +257,7 @@ article .box .container .food2 a{
 article .box .container .sport1{
     height: 100%;
     width: 100%;
-    background-image: url("../images/person-measuring-himself.jpg");
+    background-image: url("../images/person-measuring-himself-640.jpg");
     background-size: cover;
     color: #FFFFFF;
     cursor: pointer;
@@ -280,7 +281,7 @@ article .box .container .sport1 p{
 }
 
 article .box .container .sport1 a{
-    color: #09BD63;
+    color: #26998E;
     font-weight: 800;
     padding: 1rem;
     text-shadow: -0.1rem 0.1rem #000000;
@@ -289,7 +290,7 @@ article .box .container .sport1 a{
 article .box .container .sport2{
     height: 100%;
     width: 100%;
-    background-image: url("../images/workout.jpg");
+    background-image: url("../images/workout-640.jpg");
     background-size: cover;
     color: #FFFFFF;
     cursor: pointer;
@@ -313,7 +314,7 @@ article .box .container .sport2 p{
 }
 
 article .box .container .sport2 a{
-    color: #09BD63;
+    color: #26998E;
     font-weight: 800;
     padding: 1rem;
     text-shadow: -0.1rem 0.1rem #000000;
@@ -328,6 +329,7 @@ footer{
     background-color: #005EBD;
     color: #FFFFFF;
     font-weight: bold;
+    border-top: 0.2rem solid #26998E;
 }
 
 footer .social-networks{

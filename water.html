@@ -67,11 +67,16 @@
             </section>
             <section>
                 <h2>Utilize nossa calculador para fazer essa conta por você</h2>
-                <p>Quantos anos você tem: <input id="in_years_old" placeholder="IDADE"></p>
+                <fieldset>
+                    <label>Quantos anos você tem: <input id="in_years_old" placeholder="IDADE" type="number"><br></label>
+                    <label>Qual o seu peso(em kg): <input id="in_weight" placeholder="PESO" type="number"><br></label>
+                    <button onclick="calculate()">CALCULAR</button>
+                </fieldset>
+                <!--<p>Quantos anos você tem: <input id="in_years_old" placeholder="IDADE"></p>
                 <br>
                 <p>Qual o seu peso(em kg): <input id="in_weight" placeholder="PESO"><br>
                 <button onclick="calculate()">CALCULAR</button>
-                </p>
+                </p>-->
                 <p id="p_result" class="result"></p>
             </section>
         </article>

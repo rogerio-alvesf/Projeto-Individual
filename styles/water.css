@@ -15,6 +15,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 0.2rem solid #26998E;
 }
 
 header a{
@@ -39,7 +40,7 @@ header nav :hover{
 header h1{
     margin-right: 10%;
     display: flex;
-    color: #06733C;
+    color: #26998E;
 }
 
 header .container{
@@ -90,6 +91,7 @@ article section{
 
 article section h2{
     text-align: center;
+    margin-bottom: 3%;
 }
 
 article section table{
@@ -120,35 +122,62 @@ article section p{
     flex-direction: column;
 }
 
-article section input{
-    margin-top: 01%;
-    border: 1px solid #303030;
+article section fieldset{
+    width: 40%;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    border-radius: 8px;
+    margin-left: 30%;
+    font-weight: bold;
+    font-size: 1.3rem;
+    border: 2px solid #005EBD;
+    background-color: #26859E;
 }
 
-article section p button{
-    margin-left: 45%;
+article section fieldset input{
+    border: 1px solid #000000;
+}
+
+article section fieldset input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+}
+
+article section fieldset input[type=number] { 
+    -moz-appearance: textfield;
+    appearance: textfield;
+ }
+
+article section fieldset button{
     margin-top: 03%;
     cursor: pointer;
-    height: 4rem;
-    width: 15%;
+    height: 2rem;
+    width: 30%;
     border-radius: 8px;
-    border: 1px solid #303030;
+    border: 1px solid #000000;
     background-color: #005EBD;
-    color: #303030;
-    font-size: 1.5rem;
+    color: #000000;
+    font-size: 1rem;
     font-weight: bold;
 }
 
-article section p button:hover{
+article section fieldset button:hover{
     color: #FFFFFF;
-    text-shadow: -0.1rem 0.1rem #000000;
     box-shadow: 1px 1px 0.8rem #000000;
 }
 
 article section .result{
+    width: 60%;
+    text-align: center;
     margin-top: 03%;
-    display: block;
+    margin-left: 20%;
+    display: none;
     font-size: 1.5rem;
+    border: 2px solid #005EBD;
+    border-radius: 8px;
 }
 
 footer{
@@ -160,6 +189,7 @@ footer{
     background-color: #005EBD;
     color: #FFFFFF;
     font-weight: bold;
+    border-top: 0.2rem solid #26998E;
 }
 
 footer .social-networks{
