@@ -67,7 +67,6 @@ header .container :hover{
     left: 10%;
     color: #FFFFFF;
     font-size: 2.5rem;
-    animation: moveBanner 1.5s 0.9s forwards;
     text-shadow: -0.1rem 0.1rem #000000;
 }
 
@@ -76,7 +75,8 @@ header .container :hover{
     color: #FFFFFF;
     left: 10%;
     top: 80%;
-    font-size: 1rem;
+    font-size: 1.5rem;
+    text-shadow: -0.1rem 0.1rem #000000;
 }
 
 .banner img{
@@ -86,7 +86,7 @@ header .container :hover{
 }
 
 article section{
-    padding: 2rem;
+    padding: 3rem;
 }
 
 article section h2{
