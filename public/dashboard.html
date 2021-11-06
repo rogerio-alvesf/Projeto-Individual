@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saúde & Bem Estar - Conta</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.esm.js"></script>
+    <script src="script/dashboard.js"></script>
+    <script src="scripts/funcoes.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="">SOBRE</a>
+            <a href="index.html#mind">MENTE</a>
+            <a href="index.html#food">ALIMENTAÇÃO</a>
+            <a href="index.html#sport">ESPORTES</a>
+        </nav>
+        <h1>Saúde & Bem Estar</h1>
+        <div class="container">
+            <div class="informations">
+                <div class="credentials">
+                    <h3 id="b_usuario">Nome usuario</h3>
+                </div>
+                <div class="photo"><img src="images/account-photo.png"></div>
+                <div class="seta"><img src="images/set_down.png" onclick="abrir_opcoes()"></div>
+            </div>
+        </div>
+    </header>
+    <footer>
+        <p>Todos os direitos reservados &copy;Rogerio Alves Filho</p>
+        <div class="social-networks"><span>Redes Sociais:</span>
+            <div>
+                <a href="https://github.com/rogerio-alvesf" target="_blank"><img src="images/icon-github.png" alt="">GitHub</a>
+            </div>
+            <div>
+                <a href = "mailto:rogeriobusiness@protonmail.com" target="_blank"><img src="images/icon-protonmail.png" alt="">Protonmail</a>
+            </div>
+            <div>
+                <a href="https://www.linkedin.com/in/rogerio-filho-9034481b1" target="_blank"><img src="images/icon-linkedin.png" alt="">Linkedin</a>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+</script>
+</html>
+<!--rgb(40, 39, 43);-->
