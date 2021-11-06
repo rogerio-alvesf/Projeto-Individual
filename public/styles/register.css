@@ -64,7 +64,7 @@ main{
     align-items: center;
 }
 
-.form{
+.banner-form{
     height: 60%;
     width: 35%;
     background-color: #ABABAB;
@@ -72,7 +72,7 @@ main{
     border: 5px solid #26998E;
 }
 
-.form form{
+.banner-form form{
     height: 100%;
     width: 100%;
     display: flex;
@@ -82,7 +82,7 @@ main{
     color: #FFFFFF;
 }
 
-.form label{
+.banner-form label{
     font-size: 1.2rem;
     color: #303030;
     width: 100%;
@@ -91,13 +91,13 @@ main{
     align-items: center;
 }
 
-.form label input{
+.banner-form label input{
     border: 1px solid #303030;
     border-radius: 4px;
     height: 2rem;
 }
 
-.form form button{
+.banner-form form button{
     height: 3rem;
     border: 1px solid #303030;
     border-radius: 5px;
