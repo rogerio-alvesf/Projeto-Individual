@@ -1,4 +1,18 @@
-const ctx = document.getElementsByClassName('line-chart');
+var nome = sessionStorage.NOME_USUARIO;
+var email = sessionStorage.EMAIL_USUARIO;
+
+function open_menu(){
+    menu.style.display = "block";
+    menu.style.display = "flex";
+    set_image.innerHTML = `<img src="images/set_up.png" onclick="hidden_menu()">`;
+};
+
+function hidden_menu(){
+    menu.style.display = "none";
+    set_image.innerHTML = `<img src="images/set_down.png" onclick="open_menu()">`;
+};
+
+/*const ctx = document.getElementsByClassName('line-chart');
 const myChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -33,16 +47,4 @@ const myChart = new Chart(ctx, {
         }
     }
 });
-/*Colocar cor na data:
-background: #43cea2;  /* fallback for old browsers
-background: -webkit-linear-gradient(to right, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6
-background: linear-gradient(to right, #185a9d, #43cea2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+
 */
-
-function media_entrada_30min(){
-    li_media_entrada.style.display = "block";
-    var linha11 = Number(linha_11.innerHTML);
-    var linha4 = Number(linha4.innerHTML);
-    var soma_linhas = linha4 + linha11;
-    resultado_media_entrada_30min.innerHTML = `${soma_linhas}`;
-}

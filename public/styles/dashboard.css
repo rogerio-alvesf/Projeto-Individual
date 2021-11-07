@@ -84,7 +84,7 @@ header .informations .seta img{
 }
 
 header .informations .seta img:hover{
-    animation-duration: 0.4s;
+    animation-duration: 0.5s;
     animation-name: move;
     animation-iteration-count: infinite;
     animation-direction: alternate;
@@ -98,6 +98,35 @@ header .informations .seta img:hover{
     100%{
         margin-top: 100%;
     }
+}
+
+.menu{
+    background-color: #26998E;
+    height: 10.6vh;
+    width: 20%;
+    margin-left: 77%;
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.menu button{
+    cursor: pointer;
+    padding: 1rem;
+    height: 10.6vh;
+    width: 100%;
+    background-color: #26998E;
+    border: none;
+    color: #303030;
+    font-size: 1rem;
+}
+
+.menu button:hover{
+    border: 1px solid #005EBD;
+    color: #005EBD;
+    font-weight: bold;
 }
 
 footer{

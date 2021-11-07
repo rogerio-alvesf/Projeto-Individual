@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.esm.js"></script>
-    <script src="script/dashboard.js"></script>
+    <script src="scripts/dashboard.js"></script>
     <script src="scripts/funcoes.js"></script>
 </head>
 
@@ -30,10 +30,13 @@
                     <h3 id="b_usuario">Nome usuario</h3>
                 </div>
                 <div class="photo"><img src="images/account-photo.png"></div>
-                <div class="seta"><img src="images/set_down.png" onclick="abrir_opcoes()"></div>
+                <div class="seta" id="set_image"><img src="images/set_down.png" onclick="open_menu()"></div>
             </div>
         </div>
     </header>
+    <div class="menu" id="menu">
+        <button onclick="limparSessao()">SAIR</button>
+    </div>
     <footer>
         <p>Todos os direitos reservados &copy;Rogerio Alves Filho</p>
         <div class="social-networks"><span>Redes Sociais:</span>
