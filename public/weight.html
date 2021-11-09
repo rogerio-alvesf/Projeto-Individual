@@ -27,50 +27,52 @@
         <img src="images/person-measuring-himself.jpg">
         <p>Data de publicação: 30 de Outubro de 2021</p>
     </div>
-    <article>
-        <section>
-            <h2>Como é calculado o peso ideal?</h2>
-            <p>O peso ideal é calculado de acordo com o IMC (Índice de Massa Corporal), que é calcula
-                do de através de duas variáveis: o peso e a altura. Assim, sabendo que um adulto saudá
-                vel deve estar num intervalo de IMC entre 18,5 - 24,9, e sabendo o peso de cada pessoa,
-                 é possível descobrir o intervalo de peso ideal.</p>
-        </section>
-        <section>
-            <h2>Como calcular o IMC</h2>
-            <p>O cálculo do IMC deve ser feito usando a seguinte fórmula matemática: Peso ÷ (altura x 
-                altura). Mas você também pode saber se está dentro do peso ideal utilizando a nossa cal
-                culadora online, apenas inserindo seus dados:</p>
-        </section>
-        <section>
-            <h3>Referências</h3>
-                    <p>Deixo aqui um espaço dedicado para todos os links de referências utilizados neste post.
-                        <br>
-                        <b>Links:</b><br>
-                        <a href="https://www.tuasaude.com/imc/" target="_blank">IMC: o que é, como calcular e tabela de resultados</a><br>
-                        <a href="https://www.saudenaosepesa.com.br/?utm_source=g-search&utm_medium=cpc&utm_content=g-search&utm_term=0&utm_campaign=ogilvybr_novo-nordisk_saudenaosepesa_2onda_g-search_cliques_202109_g-search_cpc_calcule-imc&gclid=Cj0KCQjw_fiLBhDOARIsAF4khR2xIEdrxlVpNrjhj_LJaRb9cQQP9Y4qwrGJTFGlyq_8XtaDbuPbKjYaAl6mEALw_wcB" target="_blank">Ainda não sabe qual o seu Índice de Massa Corporal (IMC)?</a>
-                    </p>
-        </section>
-        <section>
-            <h2>Utilize nossa calculador de IMC para fazer essa conta por você</h2>
-            <fieldset>
-                <legend>IMC</legend>
-                <label>
-                    Altura:
-                    <input id="in_height" placeholder="Altura (m)" onkeyup="point()" maxlength="4" minlength="0">
-                    <span>cm</span>
-                </label>
-                <br>
-                <label>
-                    Peso:
-                    <input id="in_weight" placeholder="Peso (kg)">
-                    <span>Kg</span>
-                </label>
-                <br>
-                <button onclick="calculate()">Calcular IMC</button>
-            </fieldset>
-            <p id="p_result" class="result"></p>
-        </section>
-    </article>
+    <main>
+        <article>
+            <section>
+                <h2>Como é calculado o peso ideal?</h2>
+                <p>O peso ideal é calculado de acordo com o IMC (Índice de Massa Corporal), que é calcula
+                    do de através de duas variáveis: o peso e a altura. Assim, sabendo que um adulto saudá
+                    vel deve estar num intervalo de IMC entre 18,5 - 24,9, e sabendo o peso de cada pessoa,
+                    é possível descobrir o intervalo de peso ideal.</p>
+            </section>
+            <section>
+                <h2>Como calcular o IMC</h2>
+                <p>O cálculo do IMC deve ser feito usando a seguinte fórmula matemática: Peso ÷ (altura x 
+                    altura). Mas você também pode saber se está dentro do peso ideal utilizando a nossa cal
+                    culadora online, apenas inserindo seus dados:</p>
+            </section>
+            <section>
+                <h3>Referências</h3>
+                        <p>Deixo aqui um espaço dedicado para todos os links de referências utilizados neste post.
+                            <br>
+                            <b>Links:</b><br>
+                            <a href="https://www.tuasaude.com/imc/" target="_blank">IMC: o que é, como calcular e tabela de resultados</a><br>
+                            <a href="https://www.saudenaosepesa.com.br/?utm_source=g-search&utm_medium=cpc&utm_content=g-search&utm_term=0&utm_campaign=ogilvybr_novo-nordisk_saudenaosepesa_2onda_g-search_cliques_202109_g-search_cpc_calcule-imc&gclid=Cj0KCQjw_fiLBhDOARIsAF4khR2xIEdrxlVpNrjhj_LJaRb9cQQP9Y4qwrGJTFGlyq_8XtaDbuPbKjYaAl6mEALw_wcB" target="_blank">Ainda não sabe qual o seu Índice de Massa Corporal (IMC)?</a>
+                        </p>
+            </section>
+            <section>
+                <h2>Utilize nossa calculador de IMC para fazer essa conta por você</h2>
+                <fieldset>
+                    <legend>IMC</legend>
+                    <label>
+                        Altura:
+                        <input id="in_height" placeholder="Altura (m)" onkeyup="point()" maxlength="4" minlength="0">
+                        <span>cm</span>
+                    </label>
+                    <br>
+                    <label>
+                        Peso:
+                        <input id="in_weight" placeholder="Peso (kg)">
+                        <span>Kg</span>
+                    </label>
+                    <br>
+                    <button onclick="calculate()">Calcular IMC</button>
+                </fieldset>
+                <p id="p_result" class="result"></p>
+            </section>
+        </article>
+    </main>
     <footer>
         <p>Todos os direitos reservados &copy;Rogerio Alves Filho</p>
         <div class="social-networks"><span>Redes Sociais:</span>

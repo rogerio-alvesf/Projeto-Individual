@@ -85,24 +85,36 @@ header .container :hover{
     padding: 2rem;
 }
 
-article section{
+main{
     padding: 3rem;
 }
 
-article section h2{
-    text-align: center;
-    margin-bottom: 2%;
+main article{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+main article section{
+    width: 50%;
+    margin-top: 1rem;
+}
+
+main article section h2{
+    margin-top: 01%;
+    margin-bottom: 1rem;
+    color: #005EBD;
 }
 
 article section fieldset{
-    width: 35%;
+    width: 100%;
     height: 35vh;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
     border-radius: 8px;
-    margin-left: 32.5%;
     font-size: 1.3rem;
     font-weight: bold;
     border: 2px solid #005EBD;
