@@ -80,9 +80,6 @@ main article{
 main article section{
     width: 50%;
     margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
 }
 
 main article section h2{
