@@ -55,35 +55,46 @@ header .container :hover{
     font-weight: bold;
 }
 
-article section{
+main{
     padding: 3rem;
-    display: flex;
-    justify-content: center;
-    justify-content: space-evenly;
-    flex-direction: row;
-    flex-wrap: wrap;
 }
 
-article .photo{
+main .informations{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+main .informations h1{
+    margin-left: 5%;
+}
+
+main article{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+main article section{
+    width: 50%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+main article section h2{
+    margin-top: 01%;
+    color: #005EBD;
+}
+
+main .my-photo{
     height: 40vh;
     width: 23%;
     border-radius: 50%;
-    display: flex;
-}
-
-article .photo img{
-    height: 100%;
-    width: 100%;
-    border-radius: 50%;
     border: 0.3rem solid #005EBD;
-}
-
-article section h1{
-    justify-self: flex-end;
-}
-
-article section p{
-    justify-self: flex-end;
 }
 
 footer{
