@@ -19,4 +19,10 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+
+//Mostrar quantidade de água
+router.post("/contabilizar", function (req, res) {
+    usuarioController.contabilizar(req, res);
+});
+
 module.exports = router;

@@ -27,8 +27,20 @@ function cadastrar(nome, email, senha) {
     return database.executar(instrucao);
 }
 
+
+//Função de inserir quantidade de água
+function contabilizar(nome, tempo, quantidade) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, tempo, quantidade);
+    var instrucao = `
+        INSERT INTO quantidade_agua (tempo,volume fkusuario) VALUES ('${tempo}', '${quantidade}', '${1}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    contabilizar
 };

@@ -11,7 +11,7 @@ create table usuario(
 
 create table quantidade_agua(
 	idqtdagua int primary key auto_increment,
-    tempo datetime not null,
+    tempo time not null,
     volume double not null,
     fkusuario int,
     constraint chave_usuario foreign key (fkusuario) references usuario(idusuario)

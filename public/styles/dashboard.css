@@ -129,6 +129,88 @@ header .informations .seta img:hover{
     font-weight: bold;
 }
 
+main .graph {
+    margin-top: 1rem;
+    margin-left: 10%;
+    background-color: rgba( 38, 153, 142, 0.7);
+    display: inline-block;
+    width: 80%;
+    height: 50vh;
+    padding: 0.5rem;
+    border: 0.25rem solid #005EBD;
+}
+
+.calculate{
+    margin-left: 20%;
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    height: 65vh;
+    background-color: aqua;
+    align-items: center;
+}
+
+section fieldset{
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    border: 2px solid #005EBD;
+    background-color: #26859E;
+}
+
+section h2{
+    margin-top: 01%;
+    margin-bottom: 1rem;
+    color: #005EBD;
+}
+
+section fieldset input{
+    border: 1px solid #000000;
+}
+
+section fieldset input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+}
+
+section fieldset input[type=number] { 
+    -moz-appearance: textfield;
+    appearance: textfield;
+ }
+
+section fieldset button{
+    margin-top: 03%;
+    cursor: pointer;
+    height: 2rem;
+    width: 30%;
+    border-radius: 8px;
+    border: 1px solid #000000;
+    background-color: #005EBD;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+section fieldset button:hover{
+    color: #FFFFFF;
+    box-shadow: 1px 1px 0.8rem #000000;
+}
+
+section .result{
+    text-align: center;
+    margin-top: 03%;
+    display: none;
+    font-size: 1.5rem;
+    border: 2px solid #005EBD;
+    border-radius: 8px;
+}
+
 footer{
     margin-top: 110vh;
     display: flex;

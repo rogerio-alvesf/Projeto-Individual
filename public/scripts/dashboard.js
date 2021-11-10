@@ -12,39 +12,94 @@ function hidden_menu(){
     set_image.innerHTML = `<img src="images/set_down.png" onclick="open_menu()">`;
 };
 
-/*const ctx = document.getElementsByClassName('line-chart');
-const myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ["04:30", "05:30", "06:30", "07:30", "08:30", "09:30", "10:30", "11:30", "12:30", "13:30", "14:30", "15:30", "16:30", "17:30", "18:30", "19:30", "20:30", "21:30", "22:30", "23:30"],
-        datasets: [{
-            label: 'Passageiros',
-            data: [3000, 7000, 18000, 18600, 10000, 14000, 9900, 9000, 2000, 5000, 5502, 5800, 10000, 15200, 18400, 12700, 6840, 3418, 738, 620],
-            borderWidth: 4,
-            borderColor: '#43cea2',
-            backgroundColor: 'transparent',
-            tension: 0.5,
-        }]
-    },
-    options: {
-        plugins: {
-            legend: {
-                display: false
-            },
-            title: {
-                display: true,
-                text: 'Controle de Fluxo de Passagens',
-                font: {
-                    size: 15
-                }
-            }
-        },
-        maintainAspectRatio: false,
-        scales: {
-            y: {
-                beginAtZero: true
-            }
+function calculate() {
+    var years_old = (in_years_old.value);
+    var weight = (in_weight.value);
+
+    if (years_old == "" || weight == "") {
+        if (years_old == "" && weight == "") {
+            window.alert("Preencha todos os campos");
+        } else if (years_old == "") {
+            window.alert("Preencha o campo idade");
+        } else if (weight == "") {
+            window.alert("Preencha o campo peso");
+        } else if (years_old < 0 && weight < 0) {
+            window.alert("Idade e peso invalidos");
+        } else if (years_old < 0) {
+            window.alert("Idade invalida");
+        } else if (weight < 0) {
+            window.alert("Pesso invalido");
         }
+    } else if (years_old != "" && weight != ""){
+        if (years_old <= 17) {
+            var ml_per_kg = 40;
+            var ml_water_per_day = ml_per_kg * weight;
+            var litro_water_per_day = ml_water_per_day / 1000;
+            p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.`;
+        } else if (years_old == 18 || years_old <= 55) {
+            var ml_per_kg = 35;
+            var ml_water_per_day = ml_per_kg * weight;
+            var litro_water_per_day = ml_water_per_day / 1000;
+            p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.`;
+        } else if (years_old == 55 || years_old <= 65) {
+            var ml_per_kg = 30;
+            var ml_water_per_day = ml_per_kg * weight;
+            var litro_water_per_day = ml_water_per_day / 1000;
+            p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.`;
+        } else if (years_old > 65) {
+            var ml_per_kg = 25;
+            var ml_water_per_day = ml_per_kg * weight;
+            var litro_water_per_day = ml_water_per_day / 1000;
+            p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.`;
+        }
+    };
+        p_result.style.display = "block";
     }
-});
-*/
+
+    function limparFormulario() {
+        document.getElementById("form_login").reset();
+    }
+
+    function contabilizar() {
+
+        var account = new URLSearchParams(new FormData(document.getElementById("recorder")));
+
+        console.log("FORM NOME: ", nome);
+
+        fetch("/usuarios/contabilizar", {
+            method: "POST",
+            body: account,
+            body: sessionStorage.NOME_USUARIO
+        }).then(function (resposta) {
+            console.log(`INSERIU NO THEN DO ${nome.toUpperCase()}!`)
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.NOME_USUARIO = json.nome;
+
+                    setTimeout(function () {
+                        window.location = "./dashboard.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar contabilizar!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
