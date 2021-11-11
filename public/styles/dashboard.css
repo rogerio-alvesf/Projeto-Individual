@@ -105,6 +105,7 @@ header .informations .seta img:hover{
     height: 10.6vh;
     width: 20%;
     margin-left: 77%;
+    margin-top: 1.3rem;
     display: none;
     justify-content: center;
     flex-direction: column;
