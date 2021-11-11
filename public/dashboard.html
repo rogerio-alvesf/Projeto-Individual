@@ -34,6 +34,7 @@
         </div>
     </header>
     <div class="menu" id="menu">
+        <button onclick="alterar_conta()">GERENCIAR CONTA</button>
         <button onclick="limparSessao()">SAIR</button>
     </div>
     <main>
@@ -44,7 +45,8 @@
             <section>
                 <h2>Utilize nossa calculador para fazer essa conta por você</h2>
                 <fieldset>
-                    <label>Quantos anos você tem: <input id="in_years_old" placeholder="IDADE" type="number"><br></label>
+                    <label>Quantos anos você tem: <input id="in_years_old" placeholder="IDADE"
+                            type="number"><br></label>
                     <label>Qual o seu peso(em kg): <input id="in_weight" placeholder="PESO" type="number"><br></label>
                     <button onclick="calculate()">CALCULAR</button>
                 </fieldset>
@@ -58,6 +60,12 @@
                 <label>Quando você bebeu água: <input type="time" name="tempo"></label>
                 <button type="submit">Contabilizar</button>
             </form>
+        </div>
+        <div>
+            <form method="post" id="modificar_conta" onsubmit="return modificar()">
+                <label>Qual será o novo nome da sua conta: <input type="text" id="novo_nome" name="novo_nome"></label>
+                <label>Qual será o seu novo email: <input type="text" id="novo_email" name="novo_email"></label>
+                <button type="submit">Atualizar Credenciais</button>
         </div>
     </main>
     <footer>
@@ -80,6 +88,9 @@
 </body>
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    let data = {
+        nome: b_usuario.innerHTML,
+    }
 
     // Inicia uma variável do tipo constante (não pode ser reatribuida)
     const config = {
@@ -127,10 +138,9 @@
 
     var myChartLine = new Chart(document.getElementById("myChart"), config);
   /* aqui obrigatoriamente tem que colocar new Chart() para criar um novo chart
-    e passar dentro dos (parênteses) o elemento canvas que você quer mandar e
-    separado pela virgula o que você quer mandar, no nosso caso a config que fizemos
-    */
+      e passar dentro dos (parênteses) o elemento canvas que você quer mandar e
+      separado pela virgula o que você quer mandar, no nosso caso a config que fizemos
+      */
 </script>
 
 </html>
-<!--rgb(40, 39, 43);-->

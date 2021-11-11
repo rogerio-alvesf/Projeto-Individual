@@ -92,7 +92,7 @@ function cadastrar(req, res) {
 
 //Função para inserir no quantidade de água
 function contabilizar(req, res) {
-    var nome = req.body.nome;
+    var nome = req.body.data;
     var tempo = req.body.tempo;
     var quantidade = req.body.quantidade;
 
@@ -121,10 +121,43 @@ function contabilizar(req, res) {
     }
 }
 
+//Atualizar informações
+
+function modificar(req, res) {
+    var novo_nome = req.body.novo_nome;
+    var novo_email = req.body.novo_email;
+    var nome = req.body.data;
+
+    if (novo_nome == undefined) {
+        res.status(400).send("Seu novo nome está undefined!");
+    } else if (novo_email == undefined) {
+        res.status(400).send("Seu novo email está undefined!");
+    } else if (nome == undefined) {
+        res.status(400).send("Sue nome está undefined!");
+    } else {
+        usuarioModel.modificar(nome, novo_email, novo_nome)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao inserir! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     testar,
     contabilizar,
+    modificar,
 }

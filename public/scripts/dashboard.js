@@ -36,24 +36,27 @@ function calculate() {
             var ml_water_per_day = ml_per_kg * weight;
             var litro_water_per_day = ml_water_per_day / 1000;
             p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.`;
+            p_result.style.display = "block";
         } else if (years_old == 18 || years_old <= 55) {
             var ml_per_kg = 35;
             var ml_water_per_day = ml_per_kg * weight;
             var litro_water_per_day = ml_water_per_day / 1000;
             p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.`;
+            p_result.style.display = "block";
         } else if (years_old == 55 || years_old <= 65) {
             var ml_per_kg = 30;
             var ml_water_per_day = ml_per_kg * weight;
             var litro_water_per_day = ml_water_per_day / 1000;
             p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.`;
+            p_result.style.display = "block";
         } else if (years_old > 65) {
             var ml_per_kg = 25;
             var ml_water_per_day = ml_per_kg * weight;
             var litro_water_per_day = ml_water_per_day / 1000;
             p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.`;
+            p_result.style.display = "block";
         }
     };
-        p_result.style.display = "block";
     }
 
     function limparFormulario() {
@@ -66,10 +69,12 @@ function calculate() {
 
         console.log("FORM NOME: ", nome);
 
+        console.log(data);
+
         fetch("/usuarios/contabilizar", {
             method: "POST",
             body: account,
-            body: sessionStorage.NOME_USUARIO
+            body: data,
         }).then(function (resposta) {
             console.log(`INSERIU NO THEN DO ${nome.toUpperCase()}!`)
 
@@ -91,6 +96,49 @@ function calculate() {
             } else {
 
                 console.log("Houve um erro ao tentar contabilizar!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function modificar(){
+        var formulario = new URLSearchParams(new FormData(document.getElementById("modificar_conta")));
+        console.log(novo_email.value);
+        console.log(novo_nome.value);
+
+        fetch("/usuarios/contabilizar", {
+            method: "POST",
+            body: formulario,
+            body: data,
+        }).then(function (resposta) {
+            console.log(`INSERIU NO THEN DO ${nome.toUpperCase()}!`)
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.NOME_USUARIO = json.nome;
+
+                    setTimeout(function () {
+                        window.location = "./dashboard.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar modificar!");
 
                 resposta.text().then(texto => {
                     console.error(texto);

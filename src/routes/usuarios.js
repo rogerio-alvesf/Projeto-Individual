@@ -25,4 +25,8 @@ router.post("/contabilizar", function (req, res) {
     usuarioController.contabilizar(req, res);
 });
 
+router.post("/modificar", function (req,res){
+    usuarioController.modificar(req, res);
+});
+
 module.exports = router;
