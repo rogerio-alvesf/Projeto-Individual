@@ -62,10 +62,9 @@
             </form>
         </div>
         <div>
-            <form method="post" id="modificar_conta" onsubmit="return modificar()">
-                <label>Qual será o novo nome da sua conta: <input type="text" id="novo_nome" name="novo_nome"></label>
-                <label>Qual será o seu novo email: <input type="text" id="novo_email" name="novo_email"></label>
-                <button type="submit">Atualizar Credenciais</button>
+            Qual será o novo nome da sua conta: <input type="text" id="novo_nome">
+            Qual será o seu novo email: <input type="text" id="novo_email">
+            <button onclick="modificar()">Atualizar Credenciais</button>
         </div>
     </main>
     <footer>
@@ -88,9 +87,6 @@
 </body>
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    let data = {
-        nome: b_usuario.innerHTML,
-    }
 
     // Inicia uma variável do tipo constante (não pode ser reatribuida)
     const config = {

@@ -1,13 +1,13 @@
 var nome = sessionStorage.NOME_USUARIO;
 var email = sessionStorage.EMAIL_USUARIO;
 
-function open_menu(){
+function open_menu() {
     menu.style.display = "block";
     menu.style.display = "flex";
     set_image.innerHTML = `<img src="images/set_up.png" onclick="hidden_menu()">`;
 };
 
-function hidden_menu(){
+function hidden_menu() {
     menu.style.display = "none";
     set_image.innerHTML = `<img src="images/set_down.png" onclick="open_menu()">`;
 };
@@ -30,7 +30,7 @@ function calculate() {
         } else if (weight < 0) {
             window.alert("Pesso invalido");
         }
-    } else if (years_old != "" && weight != ""){
+    } else if (years_old != "" && weight != "") {
         if (years_old <= 17) {
             var ml_per_kg = 40;
             var ml_water_per_day = ml_per_kg * weight;
@@ -57,97 +57,110 @@ function calculate() {
             p_result.style.display = "block";
         }
     };
-    }
+}
 
-    function limparFormulario() {
-        document.getElementById("form_login").reset();
-    }
+function limparFormulario() {
+    document.getElementById("form_login").reset();
+}
 
-    function contabilizar() {
+function contabilizar() {
 
-        var account = new URLSearchParams(new FormData(document.getElementById("recorder")));
+    var account = new URLSearchParams(new FormData(document.getElementById("recorder")));
 
-        console.log("FORM NOME: ", nome);
+    console.log("FORM NOME: ", nome);
 
-        console.log(data);
+    console.log(data);
 
-        fetch("/usuarios/contabilizar", {
+    fetch("/usuarios/contabilizar", {
+        method: "POST",
+        body: account,
+        body: data,
+    }).then(function (resposta) {
+        console.log(`INSERIU NO THEN DO ${nome.toUpperCase()}!`)
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+
+                sessionStorage.NOME_USUARIO = json.nome;
+
+                setTimeout(function () {
+                    window.location = "./dashboard.html";
+                }, 1000); // apenas para exibir o loading
+
+            });
+
+        } else {
+
+            console.log("Houve um erro ao tentar contabilizar!");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
+}
+
+function modificar() {
+
+    var novonomeVAR = novo_nome.value;
+    var novoemailVAR = novo_email.value;
+    var nomeperfil = b_usuario.innerHTML;
+
+    console.log("FORM NOME: ", nomeperfil);
+
+    console.log(`SEU NOVO NOME DE USUÁRIO SERÁ: ${novonomeVAR}`);
+
+    console.log(`SEU NOVO EMAIL DE USUÁRIO SERÁ: ${novoemailVAR}`);
+
+    fetch("/usuarios/modificar", {
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
             method: "POST",
-            body: account,
-            body: data,
-        }).then(function (resposta) {
-            console.log(`INSERIU NO THEN DO ${nome.toUpperCase()}!`)
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    sessionStorage.NOME_USUARIO = json.nome;
-
-                    setTimeout(function () {
-                        window.location = "./dashboard.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar contabilizar!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
+            novo_nome: novonomeVAR,
+            novo_email: novoemailVAR,
+            nome: nomeperfil,
         })
+    }).then(function (resposta) {
+        console.log(`INSERIU NO THEN DO ${nomeperfil.toUpperCase()}!`)
 
-        return false;
-    }
+        if (resposta.ok) {
+            console.log(resposta);
 
-    function modificar(){
-        var formulario = new URLSearchParams(new FormData(document.getElementById("modificar_conta")));
-        console.log(novo_email.value);
-        console.log(novo_nome.value);
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
 
-        fetch("/usuarios/contabilizar", {
-            method: "POST",
-            body: formulario,
-            body: data,
-        }).then(function (resposta) {
-            console.log(`INSERIU NO THEN DO ${nome.toUpperCase()}!`)
+                sessionStorage.NOME_USUARIO = json.nome;
 
-            if (resposta.ok) {
-                console.log(resposta);
+                setTimeout(function () {
+                    window.location = "./dashboard.html";
+                }, 1000); // apenas para exibir o loading
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
+            });
 
-                    sessionStorage.NOME_USUARIO = json.nome;
+        } else {
 
-                    setTimeout(function () {
-                        window.location = "./dashboard.html";
-                    }, 1000); // apenas para exibir o loading
+            console.log("Houve um erro ao tentar modificar!");
 
-                });
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
 
-            } else {
+    }).catch(function (erro) {
+        console.log(erro);
+    })
 
-                console.log("Houve um erro ao tentar modificar!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-    }
+    return false;
+}

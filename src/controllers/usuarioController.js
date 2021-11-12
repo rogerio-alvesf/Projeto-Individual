@@ -126,7 +126,7 @@ function contabilizar(req, res) {
 function modificar(req, res) {
     var novo_nome = req.body.novo_nome;
     var novo_email = req.body.novo_email;
-    var nome = req.body.data;
+    var nome = req.body.nomeperfil;
 
     if (novo_nome == undefined) {
         res.status(400).send("Seu novo nome está undefined!");
