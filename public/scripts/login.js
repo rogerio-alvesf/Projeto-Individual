@@ -15,10 +15,10 @@ function entrar() {
         if (resposta.ok) {
             console.log(resposta);
 
-            resposta.json().then(json => {
+            resposta.json(setItem).then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-
+                //sessionStorage.setItem('id', json.id);
                 sessionStorage.LOGIN_USUARIO = json.login;
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;

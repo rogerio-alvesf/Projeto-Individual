@@ -1,5 +1,6 @@
-var nome = sessionStorage.NOME_USUARIO;
+var nome_perfil = sessionStorage.NOME_USUARIO;
 var email = sessionStorage.EMAIL_USUARIO;
+var id = Number(sessionStorage.getItem("id"));
 
 function open_menu() {
     menu.style.display = "block";
@@ -69,12 +70,9 @@ function contabilizar() {
 
     console.log("FORM NOME: ", nome);
 
-    console.log(data);
-
     fetch("/usuarios/contabilizar", {
         method: "POST",
         body: account,
-        body: data,
     }).then(function (resposta) {
         console.log(`INSERIU NO THEN DO ${nome.toUpperCase()}!`)
 
@@ -113,26 +111,24 @@ function modificar() {
 
     var novonomeVAR = novo_nome.value;
     var novoemailVAR = novo_email.value;
-    var nomeperfil = b_usuario.innerHTML;
 
-    console.log("FORM NOME: ", nomeperfil);
+    console.log("FORM NOME: ", nome_perfil);
 
-    console.log(`SEU NOVO NOME DE USUÁRIO SERÁ: ${novonomeVAR}`);
-
-    console.log(`SEU NOVO EMAIL DE USUÁRIO SERÁ: ${novoemailVAR}`);
+    console.log(id);
 
     fetch("/usuarios/modificar", {
+        method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            method: "POST",
             novo_nome: novonomeVAR,
             novo_email: novoemailVAR,
-            nome: nomeperfil,
+            nome: nome_perfil,
+            id: id,
         })
     }).then(function (resposta) {
-        console.log(`INSERIU NO THEN DO ${nomeperfil.toUpperCase()}!`)
+        console.log(`INSERIU NO THEN DO ${nome_perfil.toUpperCase()}!`)
 
         if (resposta.ok) {
             console.log(resposta);
@@ -140,8 +136,8 @@ function modificar() {
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-
-                sessionStorage.NOME_USUARIO = json.nome;
+                console.log(`SEU NOVO NOME DE USUÁRIO SERÁ: ${novonomeVAR}`);
+                console.log(`SEU NOVO EMAIL DE USUÁRIO SERÁ: ${novoemailVAR}`);
 
                 setTimeout(function () {
                     window.location = "./dashboard.html";

@@ -126,7 +126,8 @@ function contabilizar(req, res) {
 function modificar(req, res) {
     var novo_nome = req.body.novo_nome;
     var novo_email = req.body.novo_email;
-    var nome = req.body.nomeperfil;
+    var nome = req.body.nome;
+    var id = req.body.id;
 
     if (novo_nome == undefined) {
         res.status(400).send("Seu novo nome está undefined!");
@@ -134,8 +135,10 @@ function modificar(req, res) {
         res.status(400).send("Seu novo email está undefined!");
     } else if (nome == undefined) {
         res.status(400).send("Sue nome está undefined!");
-    } else {
-        usuarioModel.modificar(nome, novo_email, novo_nome)
+    } else if (id == undefined){
+        res.status(400).send("Seu id está undefined!");
+    }else {
+        usuarioModel.modificar(nome, novo_email, novo_nome, id)
             .then(
                 function (resultado) {
                     res.json(resultado);

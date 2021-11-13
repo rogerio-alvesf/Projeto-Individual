@@ -95,13 +95,12 @@
                 window.alert("Cadastro realizado com sucesso!");
                 window.location = "login.html";
                 limparFormulario();
-                finalizarAguardar();
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
+            window.location = "register.html"
         });
 
         return false;

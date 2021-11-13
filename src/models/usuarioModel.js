@@ -39,11 +39,10 @@ function contabilizar(nome, tempo, quantidade) {
 }
 
 //Função de atualizar informações da conta
-function modificar(nome, novo_nome, novo_email) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function modificar():", nome, novo_nome, novo_email);
+function modificar(nome, novo_nome, novo_email, id) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function modificar():", nome, novo_nome, novo_email, id);
     var instrucao = `
-        update usuario set nome = '${novo_nome}' where id = (select id from usuario where nome = '${nome}');
-        update usuario set email = '${novo_email}' where id = (select id from usuario where nome = '${nome}');
+        update usuario set nome = '${novo_nome}', email = '${novo_email}' where idusuario = ${id};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
