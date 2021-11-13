@@ -29,4 +29,8 @@ router.post("/modificar", function (req,res){
     usuarioController.modificar(req, res);
 });
 
+router.post("/apagar", function (req, res) {
+    usuarioController.apagar(req, res);
+});
+
 module.exports = router;

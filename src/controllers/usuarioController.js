@@ -92,18 +92,18 @@ function cadastrar(req, res) {
 
 //Função para inserir no quantidade de água
 function contabilizar(req, res) {
-    var nome = req.body.data;
+    var id = req.body.id;
     var tempo = req.body.tempo;
     var quantidade = req.body.quantidade;
 
-    if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
+    if (id == undefined) {
+        res.status(400).send("Seu id está undefined!");
     } else if (tempo == undefined) {
         res.status(400).send("Seu tempo está undefined!");
     } else if (quantidade == undefined) {
         res.status(400).send("Sua quantidade está undefined!");
     } else {
-        usuarioModel.contabilizar(nome, tempo, quantidade)
+        usuarioModel.contabilizar(id, tempo, quantidade)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -156,6 +156,31 @@ function modificar(req, res) {
     }
 }
 
+//Função de apagar a conta
+function apagar(req, res) {
+    var id = req.body.id;
+
+    if (id == undefined){
+        res.status(400).send("Seu id está undefined!");
+    }else {
+        usuarioModel.apagar(id)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao inserir! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     entrar,
     cadastrar,
@@ -163,4 +188,5 @@ module.exports = {
     testar,
     contabilizar,
     modificar,
+    apagar,
 }

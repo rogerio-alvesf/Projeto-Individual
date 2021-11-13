@@ -26,7 +26,7 @@
         <div class="container">
             <div class="informations">
                 <div class="credentials">
-                    <h3 id="b_usuario">Nome usuario</h3>
+                    <h3 id="nick_usuario">Nome usuario</h3>
                 </div>
                 <div class="photo"><img src="images/account-photo.png"></div>
                 <div class="seta" id="set_image"><img src="images/set_down.png" onclick="open_menu()"></div>
@@ -55,16 +55,15 @@
         </div>
         <div class="recorder">
             <h2>Contabilize aqui a conquista</h2>
-            <form method="post" id="recorder" onsubmit="return contabilizar()">
-                <label>Qual a quantidade de água que você tomou(em ml): <input type="text" name="quantidade"></label>
-                <label>Quando você bebeu água: <input type="time" name="tempo"></label>
-                <button type="submit">Contabilizar</button>
-            </form>
+            <label>Qual a quantidade de água que você tomou(em ml): <input type="text" id="in_quantidade"></label>
+            <label>Quando você bebeu água: <input type="time" id="in_tempo"></label>
+            <button onclick="contabilizar()">Contabilizar</button>
         </div>
         <div>
             Qual será o novo nome da sua conta: <input type="text" id="novo_nome">
             Qual será o seu novo email: <input type="text" id="novo_email">
             <button onclick="modificar()">Atualizar Credenciais</button>
+            <button onclick="apagar()">Deletar Conta</button>
         </div>
     </main>
     <footer>
@@ -86,7 +85,7 @@
     </footer>
 </body>
 <script>
-    b_usuario.innerHTML = nome_perfil;
+    nick_usuario.innerHTML = nome_perfil;
 
     // Inicia uma variável do tipo constante (não pode ser reatribuida)
     const config = {
@@ -134,9 +133,9 @@
 
     var myChartLine = new Chart(document.getElementById("myChart"), config);
         /* aqui obrigatoriamente tem que colocar new Chart() para criar um novo chart
-        e passar dentro dos (parênteses) o elemento canvas que você quer mandar e
-        separado pela virgula o que você quer mandar, no nosso caso a config que fizemos
-        */
+e passar dentro dos (parênteses) o elemento canvas que você quer mandar e
+separado pela virgula o que você quer mandar, no nosso caso a config que fizemos
+*/
 </script>
 
 </html>

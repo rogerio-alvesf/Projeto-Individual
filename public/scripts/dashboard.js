@@ -66,15 +66,17 @@ function limparFormulario() {
 
 function contabilizar() {
 
-    var account = new URLSearchParams(new FormData(document.getElementById("recorder")));
-
-    console.log("FORM NOME: ", nome);
-
     fetch("/usuarios/contabilizar", {
         method: "POST",
-        body: account,
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            quantidade: Number(in_quantidade.value),
+            tempo: in_tempo.value,
+            id: id,
+        })
     }).then(function (resposta) {
-        console.log(`INSERIU NO THEN DO ${nome.toUpperCase()}!`)
 
         if (resposta.ok) {
             console.log(resposta);
@@ -82,13 +84,6 @@ function contabilizar() {
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-
-                sessionStorage.NOME_USUARIO = json.nome;
-
-                setTimeout(function () {
-                    window.location = "./dashboard.html";
-                }, 1000); // apenas para exibir o loading
-
             });
 
         } else {
@@ -137,7 +132,7 @@ function modificar() {
                 console.log(`SEU NOVO EMAIL DE USUÁRIO SERÁ: ${novo_email.value}`);
 
                 setTimeout(function () {
-                    window.location = "./dashboard.html";
+                    nick_usuario.innerHTML = sessionStorage.NOME_USUARIO;
                 }, 1000); // apenas para exibir o loading
 
             });
@@ -156,4 +151,51 @@ function modificar() {
     })
 
     return false;
+}
+
+function apagar() {
+    var pergunta = window.confirm("Você certeza que deseja apagar sua conta?");
+    if (pergunta == false) {
+        window.location = "/dashboard.html";
+    } else {
+        var confirmacao = window.prompt("Digite confirar para deletar sua conta de forma permanente", "CONFIRMAR");
+        if (confirmacao.toUpperCase().trim() == "CONFIRMAR") {
+            fetch("/usuarios/apagar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id: id,
+                })
+            }).then(function (resposta) {
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        window.alert(`${novo_nome.value} SUA CONTA FOI DELETADA COM SUCESSO`);
+                        setTimeout(function () {
+                            sessionStorage.clear();
+                            window.location = "/index.html";
+                        }, 1000);
+                    });
+                } else {
+
+                    console.log("Houve um erro ao tentar deletar sua conta!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+            return false;
+        }
+    }
 }

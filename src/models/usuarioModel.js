@@ -29,10 +29,10 @@ function cadastrar(nome, email, senha) {
 
 
 //Função de inserir quantidade de água
-function contabilizar(nome, tempo, quantidade) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, tempo, quantidade);
+function contabilizar(id, tempo, quantidade) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", id, tempo, quantidade);
     var instrucao = `
-        INSERT INTO quantidade_agua (tempo,volume, fkusuario) VALUES ('${tempo}', '${quantidade}', '${1}');
+        INSERT INTO quantidade_agua (tempo,volume, fkusuario) VALUES ('${tempo}', '${quantidade}', ${id});
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -48,10 +48,20 @@ function modificar(nome, novo_nome, novo_email, id) {
     return database.executar(instrucao);
 }
 
+function apagar(id) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function modificar():", id);
+    var instrucao = `
+    delete from usuario where id = ${id};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     contabilizar,
     modificar,
+    apagar,
 };
