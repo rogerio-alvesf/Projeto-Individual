@@ -37,6 +37,15 @@
         <button onclick="alterar_conta()">GERENCIAR CONTA</button>
         <button onclick="limparSessao()">SAIR</button>
     </div>
+    <div id="manage_account" class="manage-account">
+        <div onclick="close_manage_account_option()" class="bt-close">
+            <img src="images/button_close.png">
+        </div>
+        Qual será o novo nome da sua conta: <input type="text" id="novo_nome">
+        Qual será o seu novo email: <input type="text" id="novo_email">
+        <button onclick="modificar()">Atualizar Credenciais</button>
+        <button onclick="apagar()">Deletar Conta</button>
+    </div>
     <main>
         <div class="graph">
             <canvas id="myChart" style="width: 100%; height: 100%"></canvas>
@@ -58,12 +67,6 @@
             <label>Qual a quantidade de água que você tomou(em ml): <input type="text" id="in_quantidade"></label>
             <label>Quando você bebeu água: <input type="time" id="in_tempo"></label>
             <button onclick="contabilizar()">Contabilizar</button>
-        </div>
-        <div>
-            Qual será o novo nome da sua conta: <input type="text" id="novo_nome">
-            Qual será o seu novo email: <input type="text" id="novo_email">
-            <button onclick="modificar()">Atualizar Credenciais</button>
-            <button onclick="apagar()">Deletar Conta</button>
         </div>
     </main>
     <footer>

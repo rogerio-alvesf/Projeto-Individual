@@ -13,6 +13,14 @@ function hidden_menu() {
     set_image.innerHTML = `<img src="images/set_down.png" onclick="open_menu()">`;
 };
 
+function alterar_conta(){
+    manage_account.style.display = "block";
+}
+
+function close_manage_account_option(){
+    manage_account.style.display = "none";
+}
+
 function calculate() {
     var years_old = (in_years_old.value);
     var weight = (in_weight.value);
