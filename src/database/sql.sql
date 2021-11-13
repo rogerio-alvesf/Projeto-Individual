@@ -3,22 +3,22 @@ create database saude_bemestar;
 use saude_bemestar;
 
 create table usuario(
-	idusuario int primary key auto_increment,
+	id int primary key auto_increment,
 	nome varchar(50) not null,
 	email varchar(50) not null,
 	senha varchar(50) not null
 )auto_increment = 15000;
 
 create table quantidade_agua(
-	idqtdagua int primary key auto_increment,
-    tempo time not null,
+	id int primary key auto_increment,
+    tempo datetime not null,
     volume double not null,
     fkusuario int,
-    constraint chave_usuario foreign key (fkusuario) references usuario(idusuario)
+    constraint chave_usuario foreign key (fkusuario) references usuario(id)
     );
     
 insert into usuario (nome,email,senha) values
-('Zé Almeida','zé@gamil.com','zé 260145');
+('Zé Almeida','ze@gmail.com','ze260145');
 
 -- select * from usuario;
 

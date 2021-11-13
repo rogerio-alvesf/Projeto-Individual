@@ -1,6 +1,6 @@
 var nome_perfil = sessionStorage.NOME_USUARIO;
 var email = sessionStorage.EMAIL_USUARIO;
-var id = Number(sessionStorage.getItem("id"));
+var id = sessionStorage.ID_USUARIO;
 
 function open_menu() {
     menu.style.display = "block";
@@ -109,9 +109,6 @@ function contabilizar() {
 
 function modificar() {
 
-    var novonomeVAR = novo_nome.value;
-    var novoemailVAR = novo_email.value;
-
     console.log("FORM NOME: ", nome_perfil);
 
     console.log(id);
@@ -122,8 +119,8 @@ function modificar() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            novo_nome: novonomeVAR,
-            novo_email: novoemailVAR,
+            novo_nome: novo_nome.value,
+            novo_email: novo_email.value,
             nome: nome_perfil,
             id: id,
         })
@@ -136,8 +133,8 @@ function modificar() {
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-                console.log(`SEU NOVO NOME DE USUÁRIO SERÁ: ${novonomeVAR}`);
-                console.log(`SEU NOVO EMAIL DE USUÁRIO SERÁ: ${novoemailVAR}`);
+                console.log(`SEU NOVO NOME DE USUÁRIO SERÁ: ${novo_nome.value}`);
+                console.log(`SEU NOVO EMAIL DE USUÁRIO SERÁ: ${novo_email.value}`);
 
                 setTimeout(function () {
                     window.location = "./dashboard.html";
