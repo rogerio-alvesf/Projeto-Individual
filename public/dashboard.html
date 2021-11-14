@@ -38,13 +38,16 @@
         <button onclick="limparSessao()">SAIR</button>
     </div>
     <div id="manage_account" class="manage-account">
+        <form class="formulario-conta">
+            <h2>Modificar Perfil</h2>
+            <span>Qual será o novo nome da sua conta:</span><input type="text" id="novo_nome">
+            <span>Qual será o seu novo email:</span><input type="text" id="novo_email">
+            <span><button onclick="modificar()">Atualizar Credenciais</button>
+            <button class="delete" onclick="apagar()">Deletar Conta</button></span>
+        </form>
         <div onclick="close_manage_account_option()" class="bt-close">
             <img src="images/button_close.png">
         </div>
-        Qual será o novo nome da sua conta: <input type="text" id="novo_nome">
-        Qual será o seu novo email: <input type="text" id="novo_email">
-        <button onclick="modificar()">Atualizar Credenciais</button>
-        <button onclick="apagar()">Deletar Conta</button>
     </div>
     <main>
         <div class="graph">
@@ -54,19 +57,20 @@
             <section>
                 <h2>Utilize nossa calculador para fazer essa conta por você</h2>
                 <fieldset>
-                    <label>Quantos anos você tem: <input id="in_years_old" placeholder="IDADE"
-                            type="number"><br></label>
+                    <label>Quantos anos você tem: <input id="in_years_old" placeholder="IDADE"type="number"><br></label>
                     <label>Qual o seu peso(em kg): <input id="in_weight" placeholder="PESO" type="number"><br></label>
                     <button onclick="calculate()">CALCULAR</button>
                 </fieldset>
                 <p id="p_result" class="result"></p>
             </section>
         </div>
-        <div class="recorder">
-            <h2>Contabilize aqui a conquista</h2>
-            <label>Qual a quantidade de água que você tomou(em ml): <input type="text" id="in_quantidade"></label>
-            <label>Quando você bebeu água: <input type="time" id="in_tempo"></label>
-            <button onclick="contabilizar()">Contabilizar</button>
+        <div class="counter">
+            <section>
+                <h2>Contabilize aqui a conquista</h2>
+                <label>Qual a quantidade de água que você tomou(em ml): <input type="text" id="in_quantidade"></label>
+                <label>Quando você bebeu água: <input type="time" id="in_tempo"></label>
+                <button onclick="contabilizar()">CONTABILIZAR</button>
+            </section>
         </div>
     </main>
     <footer>
@@ -89,6 +93,9 @@
 </body>
 <script>
     nick_usuario.innerHTML = nome_perfil;
+    var valor = [];
+    var periodo = [];
+
 
     // Inicia uma variável do tipo constante (não pode ser reatribuida)
     const config = {

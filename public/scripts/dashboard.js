@@ -14,7 +14,7 @@ function hidden_menu() {
 };
 
 function alterar_conta(){
-    manage_account.style.display = "block";
+    manage_account.style.display = "flex";
 }
 
 function close_manage_account_option(){
