@@ -1,3 +1,7 @@
+/*var nome_perfil = localStorage.getItem('nome');
+var email = localStorage.getItem('email');
+var id = localStorage.getItem('id');*/
+
 var nome_perfil = localStorage.NOME_USUARIO;
 var email = localStorage.EMAIL_USUARIO;
 var id = localStorage.ID_USUARIO;
@@ -128,7 +132,7 @@ function modificar() {
             id: id,
         })
     }).then(function (resposta) {
-        console.log(`INSERIU NO THEN DO ${nome_perfil.toUpperCase()}!`)
+        console.log(`INSERIU NO THEN DO ${nome_perfil.toUpperCase()}!`);
 
         if (resposta.ok) {
             console.log(resposta);
@@ -140,7 +144,7 @@ function modificar() {
                 console.log(`SEU NOVO EMAIL DE USUÁRIO SERÁ: ${novo_email.value}`);
 
                 setTimeout(function () {
-                    nick_usuario.innerHTML = localStorage.NOME_USUARIO;
+                    nick_usuario.innerHTML = nome_perfil;
                 }, 1000); // apenas para exibir o loading
 
             });
@@ -177,19 +181,18 @@ function apagar() {
                     id: id,
                 })
             }).then(function (resposta) {
-
                 if (resposta.ok) {
                     console.log(resposta);
+                    localStorage.clear();
+                    window.alert(`${novo_nome.value} SUA CONTA FOI DELETADA COM SUCESSO`);
 
                     resposta.json().then(json => {
                         console.log(json);
                         console.log(JSON.stringify(json));
-                        window.alert(`${novo_nome.value} SUA CONTA FOI DELETADA COM SUCESSO`);
-                        setTimeout(function () {
-                            localStorage.clear();
-                            window.location = "/index.html";
-                        }, 1000);
                     });
+                    setTimeout(function () {
+                        window.location = "index.html";
+                    }, 1000);
                 } else {
 
                     console.log("Houve um erro ao tentar deletar sua conta!");

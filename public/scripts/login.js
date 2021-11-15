@@ -3,7 +3,7 @@ function entrar() {
 
     var formulario = new URLSearchParams(new FormData(document.getElementById("form_login")));
 
-    console.log("FORM LOGIN: ", formulario.get("login"));
+    console.log("FORM LOGIN: ", formulario.get("email"));
     console.log("FORM SENHA: ", formulario.get("senha"));
 
     fetch("/usuarios/autenticar", {
@@ -18,9 +18,13 @@ function entrar() {
             resposta.json(setItem).then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-                localStorage.LOGIN_USUARIO = json.login;
+                localStorage.EMAIL_USUARIO = json.email;
                 localStorage.NOME_USUARIO = json.nome;
                 localStorage.ID_USUARIO = json.id;
+                /*localStorage.setItem('id', json.ID_USUARIO);
+                localStorage.setItem('email', json.EMAIL_USUARIO);
+                localStorage.setItem('nome', json.NOME_USUARIO);
+                */
 
                 setTimeout(function () {
                     window.location = "/index.html";
