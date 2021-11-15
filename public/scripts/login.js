@@ -11,16 +11,16 @@ function entrar() {
         body: formulario
     }).then(function (resposta) {
         console.log("ESTOU NO THEN DO entrar()!")
-
+        
         if (resposta.ok) {
             console.log(resposta);
 
             resposta.json(setItem).then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
-                sessionStorage.LOGIN_USUARIO = json.login;
-                sessionStorage.NOME_USUARIO = json.nome;
-                sessionStorage.ID_USUARIO = json.id;
+                localStorage.LOGIN_USUARIO = json.login;
+                localStorage.NOME_USUARIO = json.nome;
+                localStorage.ID_USUARIO = json.id;
 
                 setTimeout(function () {
                     window.location = "/index.html";
@@ -48,8 +48,8 @@ function entrar() {
 function validarSessao() {
     aguardar();
 
-    var login = sessionStorage.LOGIN_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
+    var login = localStorage.LOGIN_USUARIO;
+    var nome = localStorage.NOME_USUARIO;
 
     var h1Titulo = document.getElementById("h1_titulo");
 
@@ -65,7 +65,7 @@ function validarSessao() {
 
 function sair() {
     aguardar();
-    sessionStorage.clear();
+    localStorage.clear();
     finalizarAguardar();
     window.location = "login.html";
 }

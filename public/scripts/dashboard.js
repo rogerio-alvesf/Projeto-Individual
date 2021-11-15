@@ -1,6 +1,6 @@
-var nome_perfil = sessionStorage.NOME_USUARIO;
-var email = sessionStorage.EMAIL_USUARIO;
-var id = sessionStorage.ID_USUARIO;
+var nome_perfil = localStorage.NOME_USUARIO;
+var email = localStorage.EMAIL_USUARIO;
+var id = localStorage.ID_USUARIO;
 
 function open_menu() {
     menu.style.display = "block";
@@ -140,7 +140,7 @@ function modificar() {
                 console.log(`SEU NOVO EMAIL DE USUÁRIO SERÁ: ${novo_email.value}`);
 
                 setTimeout(function () {
-                    nick_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+                    nick_usuario.innerHTML = localStorage.NOME_USUARIO;
                 }, 1000); // apenas para exibir o loading
 
             });
@@ -186,7 +186,7 @@ function apagar() {
                         console.log(JSON.stringify(json));
                         window.alert(`${novo_nome.value} SUA CONTA FOI DELETADA COM SUCESSO`);
                         setTimeout(function () {
-                            sessionStorage.clear();
+                            localStorage.clear();
                             window.location = "/index.html";
                         }, 1000);
                     });

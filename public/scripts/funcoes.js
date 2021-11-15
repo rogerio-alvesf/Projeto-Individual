@@ -2,9 +2,9 @@
 function validarSessao() {
     // aguardar();
 
-    var email = sessionStorage.EMAIL_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
-    var id = sessionStorage.ID_USUARIO;
+    var email = localStorage.EMAIL_USUARIO;
+    var nome = localStorage.NOME_USUARIO;
+    var id = localStorage.ID_USUARIO;
 
     var h1LoginUsuario = document.getElementById("h1_login_usuario");
 
@@ -23,7 +23,7 @@ function validarSessao() {
 
 function limparSessao() {
     // aguardar();
-    sessionStorage.clear();
+    localStorage.clear();
     // finalizarAguardar();
     window.location = "../login.html";
 }
