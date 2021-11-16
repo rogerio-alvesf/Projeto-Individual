@@ -57,6 +57,24 @@ function apagar(id) {
     return database.executar(instrucao);
 }
 
+function exibir_nome(id) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function modificar():", id);
+    var instrucao = `
+    select nome from usuario where id = ${id};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function exibir_email(id) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function modificar():", id);
+    var instrucao = `
+        select email from usuario where id = ${id};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
@@ -64,4 +82,6 @@ module.exports = {
     contabilizar,
     modificar,
     apagar,
+    exibir_nome,
+    exibir_email,
 };

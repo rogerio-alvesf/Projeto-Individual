@@ -43,7 +43,7 @@
             <span>Qual será o novo nome da sua conta:</span><input type="text" id="novo_nome">
             <span>Qual será o seu novo email:</span><input type="text" id="novo_email">
             <span><button onclick="modificar()">Atualizar Credenciais</button>
-            <button class="delete" onclick="apagar()">Deletar Conta</button></span>
+                <button class="delete" onclick="apagar()">Deletar Conta</button></span>
         </form>
         <div onclick="close_manage_account_option()" class="bt-close">
             <img src="images/button_close.png">
@@ -57,7 +57,8 @@
             <section>
                 <h2>Utilize nossa calculador para fazer essa conta por você</h2>
                 <fieldset>
-                    <label>Quantos anos você tem: <input id="in_years_old" placeholder="IDADE"type="number"><br></label>
+                    <label>Quantos anos você tem: <input id="in_years_old" placeholder="IDADE"
+                            type="number"><br></label>
                     <label>Qual o seu peso(em kg): <input id="in_weight" placeholder="PESO" type="number"><br></label>
                     <button onclick="calculate()">CALCULAR</button>
                 </fieldset>
@@ -67,7 +68,7 @@
         <div class="counter">
             <section>
                 <h2>Contabilize aqui a conquista</h2>
-                <label>Qual a quantidade de água que você tomou(em ml): <input type="text" id="in_quantidade"></label>
+                <label>Qual a quantidade de água que você tomou(em ml): <input id="in_quantidade"></label>
                 <label>Quando você bebeu água: <input type="time" id="in_tempo"></label>
                 <button onclick="contabilizar()">CONTABILIZAR</button>
             </section>
@@ -96,19 +97,17 @@
     var valor = [];
     var periodo = [];
 
-
     // Inicia uma variável do tipo constante (não pode ser reatribuida)
     const config = {
         type: "line", // tipo do gráfico
         data: { // objeto que vai conter os dados do gráfico
-            labels: ["00.00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23.00"], // labels (rótulos) que serão identificados os nossos dados 
+            labels: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23.00"], // labels (rótulos) que serão identificados os nossos dados 
             datasets: [ // datasets (conjunto de dados)
                 {
                     label: "Quantidade de água(ml)", // irá conter o rótulo principal do nosso gráfico
-                    data: [0, 100, 200, 300, 400, 500, 1000, 1500, 2000, 2500, 3000], // os dados referentes aqueles rótulos
+                    data: dados_dashboard, // os dados referentes aqueles rótulos
                     backgroundColor: "#2196F3", // cor das "bolinhas" do gráfico
                     borderColor: "#3F51B5", // cor da "linha" do gráfico
-                    backgroundColor: 'transparent',
                     tension: 0.5,
                 }
             ]

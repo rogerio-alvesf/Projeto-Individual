@@ -107,6 +107,18 @@ main article section h2{
     color: #005EBD;
 }
 
+main article section h3{
+    margin-top: 01%;
+    margin-bottom: 1rem;
+    color: #005EBD;
+}
+
+main article section b{
+    margin-top: 01%;
+    margin-bottom: 1rem;
+    color: #005EBD;
+}
+
 article section table{
     display: flex;
     justify-content: center;

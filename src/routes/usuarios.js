@@ -33,4 +33,12 @@ router.post("/apagar", function (req, res) {
     usuarioController.apagar(req, res);
 });
 
+router.post("/exibir_nome", function (req, res) {
+    usuarioController.apagar(req, res);
+});
+
+router.post("/exibir_email", function (req, res) {
+    usuarioController.apagar(req, res);
+});
+
 module.exports = router;
