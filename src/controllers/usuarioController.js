@@ -181,13 +181,13 @@ function apagar(req, res) {
     }
 }
 
-function exibir_nome(req, res) {
+function buscar_infrmacoes(req, res) {
     var id = req.body.id;
 
     if (id == undefined){
         res.status(400).send("Seu id está undefined!");
     }else {
-        usuarioModel.apagar(id)
+        usuarioModel.buscar_infrmacoes(id)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -196,31 +196,7 @@ function exibir_nome(req, res) {
                 function (erro) {
                     console.log(erro);
                     console.log(
-                        "\nHouve um erro ao solicitar o nome! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
-}
-
-function exibir_email(req, res) {
-    var id = req.body.id;
-
-    if (id == undefined){
-        res.status(400).send("Seu id está undefined!");
-    }else {
-        usuarioModel.apagar(id)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao solicitar o email! Erro: ",
+                        "\nHouve um erro ao solicitar as informações! Erro: ",
                         erro.sqlMessage
                     );
                     res.status(500).json(erro.sqlMessage);
@@ -237,6 +213,5 @@ module.exports = {
     contabilizar,
     modificar,
     apagar,
-    exibir_email,
-    exibir_nome,
+    buscar_infrmacoes,
 }

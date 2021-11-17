@@ -3,10 +3,8 @@ var email = localStorage.EMAIL_USUARIO;
 var id = localStorage.ID_USUARIO;
 var dados_dashboard = [];
 
-var exibir_nome = () => {
-
-    fetch("/usuarios/exibir_nome", {
-        method: "GET",
+    fetch("/usuarios/buscar_infrmacoes", {
+        method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
@@ -17,10 +15,10 @@ var exibir_nome = () => {
 
         if (resposta.ok) {
             console.log(resposta);
-
-            resposta.json().then(json => {
+            resposta.json(setItem).then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
+                nome_perfil = localStorage.NOME_USUARIO;
             });
 
         } else {
@@ -35,41 +33,6 @@ var exibir_nome = () => {
     }).catch(function (erro) {
         console.log(erro);
     });
-}
-
-var exibir_email = () => {
-
-    fetch("/usuarios/exibir_email", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            id: id,
-        })
-    }).then(function (resposta) {
-
-        if (resposta.ok) {
-            console.log(resposta);
-
-            resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-            });
-
-        } else {
-
-            console.log("Houve um erro ao solicitar o email do usuario");
-
-            resposta.text().then(texto => {
-                console.error(texto);
-            });
-        }
-
-    }).catch(function (erro) {
-        console.log(erro);
-    });
-}
 
 function open_menu() {
     menu.style.display = "block";
@@ -142,10 +105,6 @@ function limparFormulario() {
 }
 
 function contabilizar() {
-    /*
-    Função para atualizar o chart.js de forma local
-    dados_dashboard.push(Number(in_quantidade.value));
-    */
 
     fetch("/usuarios/contabilizar", {
         method: "POST",
