@@ -3,36 +3,35 @@ var email = localStorage.EMAIL_USUARIO;
 var id = localStorage.ID_USUARIO;
 var dados_dashboard = [];
 
-    fetch("/usuarios/buscar_infrmacoes", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            id: id,
-        })
-    }).then(function (resposta) {
+fetch("/usuarios/buscar_infrmacoes", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        id: id,
+    })
+}).then(function (resposta) {
 
-        if (resposta.ok) {
-            console.log(resposta);
-            resposta.json(setItem).then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-                nome_perfil = localStorage.NOME_USUARIO;
-            });
+    if (resposta.ok) {
+        console.log(resposta);
+        resposta.json(setItem).then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+        });
 
-        } else {
+    } else {
 
-            console.log("Houve um erro ao solicitar o nome do usuario");
+        console.log("Houve um erro ao solicitar o nome do usuario");
 
-            resposta.text().then(texto => {
-                console.error(texto);
-            });
-        }
+        resposta.text().then(texto => {
+            console.error(texto);
+        });
+    }
 
-    }).catch(function (erro) {
-        console.log(erro);
-    });
+}).catch(function (erro) {
+    console.log(erro);
+});
 
 function open_menu() {
     menu.style.display = "block";
@@ -106,47 +105,52 @@ function limparFormulario() {
 
 function contabilizar() {
 
-    fetch("/usuarios/contabilizar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            quantidade: Number(in_quantidade.value),
-            tempo: in_tempo.value,
-            id: id,
+    if (in_quantidade.value != "" && in_tempo.value != "") {
+        periodo.push(Number(in_tempo.value) + ",");
+        valor.push(Number(in_quantidade.value));
+
+        fetch("/usuarios/contabilizar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                quantidade: Number(in_quantidade.value),
+                tempo: in_tempo.value,
+                id: id,
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                console.log(resposta);
+                window.alert("Valor registrado com sucesso");
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar contabilizar!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
         })
-    }).then(function (resposta) {
-
-        if (resposta.ok) {
-            console.log(resposta);
-
-            resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-            });
-
-        } else {
-
-            console.log("Houve um erro ao tentar contabilizar!");
-
-            resposta.text().then(texto => {
-                console.error(texto);
-            });
-        }
-
-    }).catch(function (erro) {
-        console.log(erro);
-    })
-
-    return false;
+    } else if (in_tempo.value == "" && in_quantidade.value == "") {
+        window.alert("Valores invalidos");
+    } else if (in_quantidade.value == "") {
+        window.alert("Valor de água invalida");
+    } else if (in_tempo.value == "") {
+        window.alert("Valor de tempo invalido");
+    }
 }
 
 function modificar() {
-
-    console.log("FORM NOME: ", nome_perfil);
-
-    console.log(id);
 
     fetch("/usuarios/modificar", {
         method: "POST",
@@ -160,23 +164,20 @@ function modificar() {
             id: id,
         })
     }).then(function (resposta) {
-        console.log(`INSERIU NO THEN DO ${nome_perfil.toUpperCase()}!`);
+        console.log(`MODIFICOU NO THEN DO ${nome_perfil.toUpperCase()}!`);
 
         if (resposta.ok) {
             console.log(resposta);
+            window.alert("Faça login novamente para que possamos finzalizar as modificações na sua conta");
+            localStorage.clear();
+            window.location = "login.html";
 
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
                 console.log(`SEU NOVO NOME DE USUÁRIO SERÁ: ${novo_nome.value}`);
                 console.log(`SEU NOVO EMAIL DE USUÁRIO SERÁ: ${novo_email.value}`);
-
-                setTimeout(function () {
-                    nick_usuario.innerHTML = nome_perfil;
-                }, 1000); // apenas para exibir o loading
-
             });
-
         } else {
 
             console.log("Houve um erro ao tentar modificar!");
@@ -189,8 +190,6 @@ function modificar() {
     }).catch(function (erro) {
         console.log(erro);
     })
-
-    return false;
 }
 
 function apagar() {
@@ -211,7 +210,6 @@ function apagar() {
             }).then(function (resposta) {
                 if (resposta.ok) {
                     console.log(resposta);
-                    localStorage.clear();
                     window.alert(`${novo_nome.value} SUA CONTA FOI DELETADA COM SUCESSO`);
 
                     resposta.json().then(json => {
@@ -219,6 +217,7 @@ function apagar() {
                         console.log(JSON.stringify(json));
                     });
                     setTimeout(function () {
+                        localStorage.clear();
                         window.location = "index.html";
                     }, 1000);
                 } else {
@@ -233,8 +232,6 @@ function apagar() {
             }).catch(function (erro) {
                 console.log(erro);
             })
-
-            return false;
         }
     }
 }

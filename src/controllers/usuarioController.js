@@ -138,7 +138,7 @@ function modificar(req, res) {
     } else if (id == undefined){
         res.status(400).send("Seu id está undefined!");
     }else {
-        usuarioModel.modificar(nome, novo_email, novo_nome, id)
+        usuarioModel.modificar(nome, novo_nome, novo_email, id)
             .then(
                 function (resultado) {
                     res.json(resultado);
