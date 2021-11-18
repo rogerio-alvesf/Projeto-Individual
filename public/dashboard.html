@@ -94,17 +94,16 @@
 </body>
 <script>
     nick_usuario.innerHTML = nome_perfil;
-    var valor = [];
-    var periodo = [];
     // Inicia uma variável do tipo constante (não pode ser reatribuida)
     const config = {
         type: "line", // tipo do gráfico
         data: { // objeto que vai conter os dados do gráfico
-            labels: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23.00"], // labels (rótulos) que serão identificados os nossos dados 
+            labels: periodo,
+            //labels: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23.00"], // labels (rótulos) que serão identificados os nossos dados 
             datasets: [ // datasets (conjunto de dados)
                 {
                     label: "Quantidade de água(ml)", // irá conter o rótulo principal do nosso gráfico
-                    data: dados_dashboard, // os dados referentes aqueles rótulos
+                    data: valor, // os dados referentes aqueles rótulos
                     backgroundColor: "#2196F3", // cor das "bolinhas" do gráfico
                     borderColor: "#3F51B5", // cor da "linha" do gráfico
                     tension: 0.5,

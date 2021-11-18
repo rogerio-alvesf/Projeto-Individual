@@ -1,7 +1,8 @@
 var nome_perfil = localStorage.NOME_USUARIO;
 var email = localStorage.EMAIL_USUARIO;
 var id = localStorage.ID_USUARIO;
-var dados_dashboard = [];
+var valor = [];
+var periodo = [];
 
 fetch("/usuarios/buscar_infrmacoes", {
     method: "POST",
@@ -15,9 +16,13 @@ fetch("/usuarios/buscar_infrmacoes", {
 
     if (resposta.ok) {
         console.log(resposta);
-        resposta.json(setItem).then(json => {
+        resposta.json().then(json => {
             console.log(json);
             console.log(JSON.stringify(json));
+            localStorage.valor = json.volume;
+            localStorage.periodo = json.tempo;
+            valor.push(localStorage.JSON.parse(valor));
+            periodo.push(localStorage.JSON.parse(periodo));
         });
 
     } else {
@@ -106,7 +111,7 @@ function limparFormulario() {
 function contabilizar() {
 
     if (in_quantidade.value != "" && in_tempo.value != "") {
-        periodo.push(Number(in_tempo.value) + ",");
+        periodo.push(Number(in_tempo.value));
         valor.push(Number(in_quantidade.value));
 
         fetch("/usuarios/contabilizar", {
