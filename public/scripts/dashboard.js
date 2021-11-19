@@ -1,8 +1,11 @@
 var nome_perfil = localStorage.getItem("NOME");
 var email = localStorage.getItem("EMAIL");
 var id = localStorage.getItem("ID");
+var valor = [];
+var periodo = [];
 
-fetch("/usuarios/buscar_infrmacoes", {
+
+fetch("/usuarios/buscar_informacoes", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
@@ -17,10 +20,10 @@ fetch("/usuarios/buscar_infrmacoes", {
         resposta.json().then(json => {
             console.log(json);
             console.log(JSON.stringify(json));
-            localStorage.valor = json.volume;
-            localStorage.periodo = json.tempo;
-            valor.push(localStorage.JSON.parse(valor));
-            periodo.push(localStorage.JSON.parse(periodo));
+            localStorage.VALOR = json.volume;
+            localStorage.PERIODO = json.tempo;
+            valor.push(Number(localStorage.VALOR));
+            periodo.push(Number(localStorage.PERIODO));
         });
 
     } else {
@@ -109,8 +112,6 @@ function limparFormulario() {
 function contabilizar() {
 
     if (in_quantidade.value != "" && in_tempo.value != "") {
-        periodo.push(Number(in_tempo.value));
-        valor.push(Number(in_quantidade.value));
 
         fetch("/usuarios/contabilizar", {
             method: "POST",
@@ -127,15 +128,9 @@ function contabilizar() {
             if (resposta.ok) {
                 console.log(resposta);
                 window.alert("Valor registrado com sucesso");
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                });
-
+                window.location = "dashboard.html";
             } else {
-
                 console.log("Houve um erro ao tentar contabilizar!");
-
                 resposta.text().then(texto => {
                     console.error(texto);
                 });

@@ -57,11 +57,10 @@ function apagar(id) {
     return database.executar(instrucao);
 }
 
-function buscar_infrmacoes(id) {
+function buscar_informacoes(id) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function modificar():", id);
     var instrucao = `
-    select u.*, q.* from usuario as u join quantidade_agua as q on q.fkusuario = u.id where u.id = ${id};
-
+    select tempo, volume from quantidade_agua where fkusuario = ${id};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -74,5 +73,5 @@ module.exports = {
     contabilizar,
     modificar,
     apagar,
-    buscar_infrmacoes,
+    buscar_informacoes,
 };
