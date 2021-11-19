@@ -1,6 +1,6 @@
-var nome_perfil = localStorage.NOME_USUARIO;
-var email = localStorage.EMAIL_USUARIO;
-var id = localStorage.ID_USUARIO;
+var nome_perfil = localStorage.getItem("NOME");
+var email = localStorage.getItem("EMAIL");
+var id = localStorage.getItem("ID");
 
 fetch("/usuarios/buscar_infrmacoes", {
     method: "POST",
@@ -171,15 +171,14 @@ function modificar() {
 
         if (resposta.ok) {
             console.log(resposta);
-            window.alert("Faça login novamente para que possamos finzalizar as modificações na sua conta");
-            localStorage.clear();
-            window.location = "login.html";
-
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
                 console.log(`SEU NOVO NOME DE USUÁRIO SERÁ: ${novo_nome.value}`);
                 console.log(`SEU NOVO EMAIL DE USUÁRIO SERÁ: ${novo_email.value}`);
+                window.alert("Faça login novamente para que possamos finzalizar as modificações na sua conta");
+                localStorage.clear();
+                window.location = "login.html";
             });
         } else {
 
