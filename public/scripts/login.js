@@ -45,8 +45,6 @@ function entrar() {
     }).catch(function (erro) {
         console.log(erro);
     })
-
-    return false;
 }
 
 function validarSessao() {
@@ -55,21 +53,12 @@ function validarSessao() {
     var login = localStorage.LOGIN_USUARIO;
     var nome = localStorage.NOME_USUARIO;
 
-    var h1Titulo = document.getElementById("h1_titulo");
-
-    if (login != null && nome != null) {
-        // window.alert(`Seja bem-vindo, ${nome}!`);
-        h1Titulo.innerHTML = `${login}`;
-
-        finalizarAguardar();
-    } else {
+    if (login == null && nome == null) {
         window.location = "login.html";
     }
 }
 
 function sair() {
-    aguardar();
     localStorage.clear();
-    finalizarAguardar();
     window.location = "login.html";
 }

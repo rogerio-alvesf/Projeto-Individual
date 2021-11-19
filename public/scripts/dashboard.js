@@ -1,8 +1,6 @@
 var nome_perfil = localStorage.NOME_USUARIO;
 var email = localStorage.EMAIL_USUARIO;
 var id = localStorage.ID_USUARIO;
-var valor = [];
-var periodo = [];
 
 fetch("/usuarios/buscar_infrmacoes", {
     method: "POST",
