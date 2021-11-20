@@ -5,6 +5,12 @@ var valor = [];
 var periodo = [];
 var quantidadeIdeal = 0;
 
+if(localStorage.getItem("VALOR IDEAL") == null){
+    sp_idealValue.style.display = "none";
+}else{
+    sp_idealValue.style.display = "block";
+    idealValue.innerHTML = quantidadeIdeal;
+}
 
 fetch("/usuarios/buscar_informacoes", {
     method: "POST",
@@ -54,8 +60,11 @@ fetch("/usuarios/buscar_estatisticas", {
             lowerValue.innerHTML = JSON.stringify(json.lowerValue);
             highestValue.innerHTML = JSON.stringify(json.highestValue);
             averageValue.innerHTML = JSON.stringify(json.averageValue);
+            if(JSON.stringify(json.sumValue) == localStorage.getItem("VALOR IDEAL")){
+                congration.style.display = "flex";
+                id_main.style.filter.blur = "0.1rem";
+            }
         });
-
 
     } else {
 
