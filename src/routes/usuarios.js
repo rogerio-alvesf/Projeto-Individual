@@ -37,4 +37,8 @@ router.post("/buscar_informacoes", function (req, res) {
     usuarioController.buscar_informacoes(req, res);
 });
 
+router.post("/buscar_estatisticas", function (req, res) {
+    usuarioController.buscar_estatisticas(req, res);
+});
+
 module.exports = router;

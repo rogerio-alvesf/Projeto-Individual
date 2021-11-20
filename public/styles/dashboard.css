@@ -144,7 +144,7 @@ header .informations .seta img:hover{
 main .graph {
     margin-top: 1rem;
     margin-left: 10%;
-    background-color:rgba(0, 94, 189, 0.5);
+    background-color:rgba(0, 94, 189, 0.4);
     display: inline-block;
     width: 80%;
     height: 50vh;
@@ -252,15 +252,13 @@ main .container{
     border-radius: 8px;
     font-weight: bold;
     border: 2px solid #26998E;
-    background-color:rgba(0, 94, 189, 0.5);
+    background-color:rgba(0, 94, 189, 0.4);
 }
 
 .calculate section h2{
     margin-top: 01%;
     margin-bottom: 1rem;
     font-size: 1.2rem;
-    color: #26998E;
-    text-shadow: -0.1rem 0.1rem rgba(0, 0, 0, 1);
 }
 
 .calculate section fieldset input{
@@ -302,6 +300,7 @@ main .container{
     font-size: 1.5rem;
     border: 2px solid #26998E;
     border-radius: 8px;
+    margin-bottom: 23%;
 }
 
 .counter{
@@ -324,14 +323,12 @@ main .container{
     font-weight: bold;
     font-size: 1rem;
     border: 2px solid #26998E;
-    background-color:rgba(0, 94, 189, 0.5);
+    background-color:rgba(0, 94, 189, 0.4);
 }
 
 .counter section h2{
     margin-top: 01%;
     margin-bottom: 1rem;
-    color: #26998E;
-    text-shadow: -0.1rem 0.1rem rgba(0, 0, 0, 1);
 }
 
 .counter section button{
@@ -369,6 +366,20 @@ main .container{
 
 .counter section button:hover{
     color: #FFFFFF;
+}
+
+.panel{
+    border: 2px solid #26998E;
+    width: 60%;
+    border-radius: 8px;
+    margin-left: 20%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-color:rgba(0, 94, 189, 0.4);
 }
 
 footer{

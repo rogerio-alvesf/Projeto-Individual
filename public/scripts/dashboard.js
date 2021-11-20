@@ -3,6 +3,7 @@ var email = localStorage.getItem("EMAIL");
 var id = localStorage.getItem("ID");
 var valor = [];
 var periodo = [];
+var quantidadeIdeal = 0;
 
 
 fetch("/usuarios/buscar_informacoes", {
@@ -16,19 +17,49 @@ fetch("/usuarios/buscar_informacoes", {
 }).then(function (resposta) {
 
     if (resposta.ok) {
-        console.log(resposta);
         resposta.json().then(json => {
             console.log(json);
             console.log(JSON.stringify(json));
-            localStorage.VALOR = json.volume;
-            localStorage.PERIODO = json.tempo;
-            valor.push(Number(localStorage.VALOR));
-            periodo.push(Number(localStorage.PERIODO));
+            localStorage.setItem("DADOS", JSON.stringify(json))
         });
+
 
     } else {
 
-        console.log("Houve um erro ao solicitar o nome do usuario");
+        console.log("Houve um erro ao buscar as informações do usuario");
+
+        resposta.text().then(texto => {
+            console.error(texto);
+        });
+    }
+
+}).catch(function (erro) {
+    console.log(erro);
+});
+
+fetch("/usuarios/buscar_estatisticas", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        id: id,
+    })
+}).then(function (resposta) {
+
+    if (resposta.ok) {
+        resposta.json().then(json => {
+            console.log(JSON.stringify(json));
+            sumValue.innerHTML = JSON.stringify(json.sumValue);
+            lowerValue.innerHTML = JSON.stringify(json.lowerValue);
+            highestValue.innerHTML = JSON.stringify(json.highestValue);
+            averageValue.innerHTML = JSON.stringify(json.averageValue);
+        });
+
+
+    } else {
+
+        console.log("Houve um erro ao buscar as estatisticas do usuario");
 
         resposta.text().then(texto => {
             console.error(texto);
@@ -83,38 +114,51 @@ function calculate() {
             var litro_water_per_day = ml_water_per_day / 1000;
             p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.
             <br>
-            <img src="images/water.gif" style="height: 25vh;">`;
+            <img src="images/water.gif" style="height: 25vh;">
+            <img src="images/save.png" style="cursor: pointer; height: 1.5rem;" onclick= "save_value()">`;
             calculo.style.marginTop = "19vh";
             p_result.style.display = "block";
+            quantidadeIdeal = ml_water_per_day;
         } else if (years_old == 18 || years_old <= 55) {
             var ml_per_kg = 35;
             var ml_water_per_day = ml_per_kg * weight;
             var litro_water_per_day = ml_water_per_day / 1000;
             p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.
             <br>
-            <img src="images/water.gif" style="height: 25vh;">`;
+            <img src="images/water.gif" style="height: 25vh;">
+            <img src="images/save.png" style="cursor: pointer; height: 1.5rem;" onclick= "save_value()">`;
             calculo.style.marginTop = "19vh";
             p_result.style.display = "block";
+            quantidadeIdeal = ml_water_per_day;
         } else if (years_old == 55 || years_old <= 65) {
             var ml_per_kg = 30;
             var ml_water_per_day = ml_per_kg * weight;
             var litro_water_per_day = ml_water_per_day / 1000;
             p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.
             <br>
-            <img src="images/water.gif" style="height: 25vh;">`;
+            <img src="images/water.gif" style="height: 25vh;">
+            <img src="images/save.png" style="cursor: pointer; height: 1.5rem;" onclick= "save_value()">`;
             calculo.style.marginTop = "19vh";
             p_result.style.display = "block";
+            quantidadeIdeal = ml_water_per_day;
         } else if (years_old > 65) {
             var ml_per_kg = 25;
             var ml_water_per_day = ml_per_kg * weight;
             var litro_water_per_day = ml_water_per_day / 1000;
             p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.
             <br>
-            <img src="images/water.gif" style="height: 25vh;">`;
+            <img src="images/water.gif" style="height: 25vh;">
+            <img src="images/save.png" style="cursor: pointer; height: 1.5rem;" onclick= "save_value()">`;
             calculo.style.marginTop = "19vh";
             p_result.style.display = "block";
+            quantidadeIdeal = ml_water_per_day;
         }
     };
+}
+
+function save_value(){
+    localStorage.setItem("VALOR IDEAL", quantidadeIdeal);
+    window.alert("Valor salvo com sucesso");
 }
 
 function limparFormulario() {

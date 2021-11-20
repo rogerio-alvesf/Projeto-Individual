@@ -49,7 +49,7 @@ function modificar(nome, novo_nome, novo_email, id) {
 }
 
 function apagar(id) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function modificar():", id);
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function apagar():", id);
     var instrucao = `
     delete from usuario where id = ${id};
     `;
@@ -58,9 +58,18 @@ function apagar(id) {
 }
 
 function buscar_informacoes(id) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function modificar():", id);
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function buscar_informacoes():", id);
     var instrucao = `
     select tempo, volume from quantidade_agua where fkusuario = ${id};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function buscar_estatisticas(id) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function buscar_estatisticas():", id);
+    var instrucao = `
+    select sum(volume) as 'sumValue', min(volume) as 'lowerValue', max(volume) as 'highestValue', avg(volume) as 'averageValue' from quantidade_agua where fkusuario = ${id};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -74,4 +83,5 @@ module.exports = {
     modificar,
     apagar,
     buscar_informacoes,
+    buscar_estatisticas,
 };
