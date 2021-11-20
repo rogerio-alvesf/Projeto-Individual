@@ -100,6 +100,16 @@ header .informations .seta img:hover{
     }
 }
 
+/*.marca{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #26998E;
+    clip-path: circle(600px at right 800px);
+}*/
+
 .menu{
     background-color: #26998E;
     height: 10.6vh;
@@ -134,21 +144,17 @@ header .informations .seta img:hover{
 main .graph {
     margin-top: 1rem;
     margin-left: 10%;
-    background-color: rgba( 38, 153, 142, 0.7);
+    background-color:rgba(0, 94, 189, 0.5);
     display: inline-block;
     width: 80%;
     height: 50vh;
     padding: 0.5rem;
-    border: 0.25rem solid #005EBD;
-    justify-content: center;
-    align-items: flex-start;
+    border: 0.25rem solid #26998E;
+    border-radius: 8px;
 }
 
-main div{
+main .container{
     display: flex;
-    flex-wrap: wrap;
-    height: 120vh;
-    flex-direction: row;
     justify-content: flex-start;
 }
 
@@ -176,6 +182,7 @@ main div{
 .manage-account h2{
     text-align: center;
     color: #26998E;
+    text-shadow: 0rem 0.1rem rgba(0, 0, 0, 1);
 }
 
 .manage-account span{
@@ -208,8 +215,8 @@ main div{
     height: 2.5rem;
     width: 40%;
     border-radius: 8px;
-    border: 1px solid #26998E;
-    background-color: #005EBD;
+    border: 1px solid #000000;
+    background-color: #26998E;
     color: #000000;
     font-size: 1rem;
     font-weight: bold;
@@ -225,18 +232,18 @@ main div{
 }
 
 .calculate{
-    margin-left: 20%;
+    margin-left: 10%;
     width: 35%;
     display: flex;
     justify-content: flex-start;
-    margin-top: 1rem;
-    height: 65vh;
-    background-color: aqua;
+    margin-right: 12%;
+    height: 60vh;
     align-items: center;
+    float: left;
 }
 
 .calculate section fieldset{
-    height: 30vh;
+    height: 35vh;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -244,15 +251,16 @@ main div{
     text-align: center;
     border-radius: 8px;
     font-weight: bold;
-    font-size: 1.3rem;
-    border: 2px solid #005EBD;
-    background-color: #26859E;
+    border: 2px solid #26998E;
+    background-color:rgba(0, 94, 189, 0.5);
 }
 
 .calculate section h2{
     margin-top: 01%;
     margin-bottom: 1rem;
-    color: #005EBD;
+    font-size: 1.2rem;
+    color: #26998E;
+    text-shadow: -0.1rem 0.1rem rgba(0, 0, 0, 1);
 }
 
 .calculate section fieldset input{
@@ -277,7 +285,7 @@ main div{
     width: 30%;
     border-radius: 8px;
     border: 1px solid #000000;
-    background-color: #005EBD;
+    background-color: #26998E;
     color: #000000;
     font-size: 1rem;
     font-weight: bold;
@@ -285,7 +293,6 @@ main div{
 
 .calculate section fieldset button:hover{
     color: #FFFFFF;
-    box-shadow: 1px 1px 0.8rem #000000;
 }
 
 .calculate section .result{
@@ -293,18 +300,16 @@ main div{
     margin-top: 03%;
     display: none;
     font-size: 1.5rem;
-    border: 2px solid #005EBD;
+    border: 2px solid #26998E;
     border-radius: 8px;
 }
 
 .counter{
-    margin-left: 20%;
+    margin-left: 30%;
     width: 35%;
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
     height: 65vh;
-    background-color: aqua;
     align-items: center;
 }
 
@@ -318,13 +323,15 @@ main div{
     border-radius: 8px;
     font-weight: bold;
     font-size: 1rem;
-    border: 2px solid #005EBD;
-    background-color: #26859E;
+    border: 2px solid #26998E;
+    background-color:rgba(0, 94, 189, 0.5);
 }
 
 .counter section h2{
     margin-top: 01%;
     margin-bottom: 1rem;
+    color: #26998E;
+    text-shadow: -0.1rem 0.1rem rgba(0, 0, 0, 1);
 }
 
 .counter section button{
@@ -334,7 +341,7 @@ main div{
     width: 30%;
     border-radius: 8px;
     border: 1px solid #000000;
-    background-color: #005EBD;
+    background-color: #26998E;
     color: #000000;
     font-size: 1rem;
     font-weight: bold;
@@ -362,7 +369,6 @@ main div{
 
 .counter section button:hover{
     color: #FFFFFF;
-    box-shadow: 1px 1px 0.8rem #000000;
 }
 
 footer{

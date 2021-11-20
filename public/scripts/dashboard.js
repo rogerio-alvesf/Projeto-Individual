@@ -81,25 +81,37 @@ function calculate() {
             var ml_per_kg = 40;
             var ml_water_per_day = ml_per_kg * weight;
             var litro_water_per_day = ml_water_per_day / 1000;
-            p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.`;
+            p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.
+            <br>
+            <img src="images/water.gif" style="height: 25vh;">`;
+            calculo.style.marginTop = "19vh";
             p_result.style.display = "block";
         } else if (years_old == 18 || years_old <= 55) {
             var ml_per_kg = 35;
             var ml_water_per_day = ml_per_kg * weight;
             var litro_water_per_day = ml_water_per_day / 1000;
-            p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.`;
+            p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.
+            <br>
+            <img src="images/water.gif" style="height: 25vh;">`;
+            calculo.style.marginTop = "19vh";
             p_result.style.display = "block";
         } else if (years_old == 55 || years_old <= 65) {
             var ml_per_kg = 30;
             var ml_water_per_day = ml_per_kg * weight;
             var litro_water_per_day = ml_water_per_day / 1000;
-            p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.`;
+            p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.
+            <br>
+            <img src="images/water.gif" style="height: 25vh;">`;
+            calculo.style.marginTop = "19vh";
             p_result.style.display = "block";
         } else if (years_old > 65) {
             var ml_per_kg = 25;
             var ml_water_per_day = ml_per_kg * weight;
             var litro_water_per_day = ml_water_per_day / 1000;
-            p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.`;
+            p_result.innerHTML = `O ideal é você tomar <b>${ml_water_per_day} ml</b> ou <b>${litro_water_per_day.toFixed(2)} litros</b> de água por dia.
+            <br>
+            <img src="images/water.gif" style="height: 25vh;">`;
+            calculo.style.marginTop = "19vh";
             p_result.style.display = "block";
         }
     };

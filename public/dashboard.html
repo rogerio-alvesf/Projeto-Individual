@@ -50,13 +50,15 @@
         </div>
     </div>
     <main>
-        <div class="graph">
-            <canvas id="myChart" style="width: 100%; height: 100%"></canvas>
+        <div class="container">
+            <div class="graph">
+                <canvas id="myChart" style="width: 100%; height: 100%"></canvas>
+            </div>
         </div>
-        <div class="calculate">
+        <div class="calculate" id="calculo">
             <section>
-                <h2>Utilize nossa calculador para fazer essa conta por você</h2>
                 <fieldset>
+                    <h2>Utilize nossa calculador para fazer essa conta por você</h2>
                     <label>Quantos anos você tem: <input id="in_years_old" placeholder="IDADE"
                             type="number"><br></label>
                     <label>Qual o seu peso(em kg): <input id="in_weight" placeholder="PESO" type="number"><br></label>
@@ -104,8 +106,8 @@
                 {
                     label: "Quantidade de água(ml)", // irá conter o rótulo principal do nosso gráfico
                     data: valor, // os dados referentes aqueles rótulos
-                    backgroundColor: "#2196F3", // cor das "bolinhas" do gráfico
-                    borderColor: "#3F51B5", // cor da "linha" do gráfico
+                    backgroundColor: "#26998E", // cor das "bolinhas" do gráfico
+                    borderColor: "#26998E", // cor da "linha" do gráfico
                     tension: 0.5,
                 }
             ]
@@ -122,7 +124,7 @@
                     font: {
                         size: 16
                     },
-                    color: "#303030"
+                    color: "#000000"
                 }
             },
             maintainAspectRatio: false,
