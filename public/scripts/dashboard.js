@@ -4,13 +4,14 @@ var id = localStorage.getItem("ID");
 var valor = [];
 var periodo = [];
 var quantidadeIdeal = 0;
+var dados = 0;
 
-if(localStorage.getItem("VALOR IDEAL") == null){
-    sp_idealValue.style.display = "none";
-}else{
-    sp_idealValue.style.display = "block";
-    idealValue.innerHTML = quantidadeIdeal;
-}
+// if(localStorage.getItem("VALOR IDEAL") == null){
+//     sp_idealValue.style.display = "none";
+// }else{
+//     sp_idealValue.style.display = "block";
+//     idealValue.innerHTML = quantidadeIdeal;
+// }
 
 fetch("/usuarios/buscar_informacoes", {
     method: "POST",
@@ -25,8 +26,17 @@ fetch("/usuarios/buscar_informacoes", {
     if (resposta.ok) {
         resposta.json().then(json => {
             console.log(json);
-            console.log(JSON.stringify(json));
-            localStorage.setItem("DADOS", JSON.stringify(json))
+            dados = (json);
+            for(var contador = 0; contador < dados.length; contador ++){
+                periodo.push(dados[contador].tempo);
+                valor.push(dados[contador].volume);
+            }
+            myChart.update();
+            //localStorage.setItem("DADOS",JSON.stringify(json));
+            // localStorage.getItem("DADOS", JSON.parse(JSON.stringify(json))).forEach((row, index) => {
+            // periodo.push(row.tempo);
+            // valor.push(row.volume);
+            // });
         });
 
 
@@ -60,7 +70,7 @@ fetch("/usuarios/buscar_estatisticas", {
             lowerValue.innerHTML = JSON.stringify(json.lowerValue);
             highestValue.innerHTML = JSON.stringify(json.highestValue);
             averageValue.innerHTML = JSON.stringify(json.averageValue);
-            if(JSON.stringify(json.sumValue) == localStorage.getItem("VALOR IDEAL")){
+            if (JSON.stringify(json.sumValue) == localStorage.getItem("VALOR IDEAL")) {
                 congration.style.display = "flex";
                 id_main.style.filter.blur = "0.1rem";
             }
@@ -165,7 +175,7 @@ function calculate() {
     };
 }
 
-function save_value(){
+function save_value() {
     localStorage.setItem("VALOR IDEAL", quantidadeIdeal);
     window.alert("Valor salvo com sucesso");
 }
