@@ -76,7 +76,8 @@
         <div class="panel">
             <h2>Confira como está sua jornada</h2>
             <p>
-                <span id="sp_idealValue">Quantidade ideal de água que você deve tomar: <span id="id_idealValue" style="font-weight: bold;"></span></span>
+                <span id="sp_idealValue">Quantidade ideal de água que você deve tomar: <span id="id_idealValue"
+                        style="font-weight: bold;"></span></span>
                 <br>
                 Você já bebeu: <span id="sumValue" style="font-weight: bold;"></span>
                 <br>
@@ -84,9 +85,14 @@
                 <br>
                 Maior quantidade de água que você bebeu: <span id="highestValue" style="font-weight: bold;"></span>
                 <br>
-                Quantidade média de água que você toma por hora: <span id="averageValue" style="font-weight: bold;"></span>
+                Quantidade média de água que você toma por hora: <span id="averageValue"
+                    style="font-weight: bold;"></span>
             </p>
         </div>
+        <!-- <div class="graph-doughnut">
+            <h3>Quanto falta</h3>
+            <canvas id="myChart_doughnut" style="width: 100%; height: 100%"></canvas>
+        </div> -->
     </main>
     <footer>
         <p>Todos os direitos reservados &copy;Rogerio Alves Filho</p>
@@ -107,63 +113,83 @@
     </footer>
 </body>
 <script>
-    nick_usuario.innerHTML = localStorage.getItem("NOME"); 
+    nick_usuario.innerHTML = localStorage.getItem("NOME");
     sp_nick_usuario.innerHTML = localStorage.getItem("NOME");
-function showchart(){
-    // Inicia uma variável do tipo constante (não pode ser reatribuida)
-    const config = {
-        type: "line", // tipo do gráfico
-        data: { // objeto que vai conter os dados do gráfico
-            labels: periodo,
-            //labels: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23.00"], // labels (rótulos) que serão identificados os nossos dados 
-            datasets: [ // datasets (conjunto de dados)
-                {
-                    label: "Quantidade de água(ml)", // irá conter o rótulo principal do nosso gráfico
-                    data: valor, // os dados referentes aqueles rótulos
-                    backgroundColor: "#26998E", // cor das "bolinhas" do gráfico
-                    borderColor: "#26998E", // cor da "linha" do gráfico
-                    tension: 0.5,
-                }
-            ]
-        },
-
-        options: {
-            parsing: {
-                xAxisKey: 'volume',
-                yAxisKey: 'tempo',
+    function showchart_line() {
+        const config = {
+            type: "line", // tipo do gráfico
+            data: { // objeto que vai conter os dados do gráfico
+                labels: periodo,
+                //labels: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23.00"], // labels (rótulos) que serão identificados os nossos dados 
+                datasets: [ // datasets (conjunto de dados)
+                    {
+                        label: "Quantidade de água(ml)", // irá conter o rótulo principal do nosso gráfico
+                        data: valor, // os dados referentes aqueles rótulos
+                        backgroundColor: "#26998E", // cor das "bolinhas" do gráfico
+                        borderColor: "#26998E", // cor da "linha" do gráfico
+                        tension: 0.5,
+                    }
+                ]
             },
-            plugins: {
-                legend: {
-                    display: false
+            options: {
+                parsing: {
+                    xAxisKey: 'volume',
+                    yAxisKey: 'tempo',
                 },
-                title: {
-                    display: true,
-                    text: 'Quantidade de Água',
-                    font: {
-                        size: 16
+                plugins: {
+                    legend: {
+                        display: false
                     },
-                    color: "#000000"
-                }
-            },
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true
+                    title: {
+                        display: true,
+                        text: 'Quantidade de Água',
+                        font: {
+                            size: 16
+                        },
+                        color: "#000000"
+                    }
+                },
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
+            /* maintainAspectRatio (manter relação de aspecto) 
+              caso true: ele "obdece" a altura e largura que colocamos
+              caso false: ele não "obdece" a altura e largura que colocamos e se ajusta ao componente pai
+            */
         }
-        /* maintainAspectRatio (manter relação de aspecto) 
-          caso true: ele "obdece" a altura e largura que colocamos
-          caso false: ele não "obdece" a altura e largura que colocamos e se ajusta ao componente pai
-        */
+        var myChartLine = new Chart(document.getElementById("myChart"), config);
     }
 
-    var myChartLine = new Chart(document.getElementById("myChart"), config);
-        /* aqui obrigatoriamente tem que colocar new Chart() para criar um novo chart
-e passar dentro dos (parênteses) o elemento canvas que você quer mandar e
-separado pela virgula o que você quer mandar, no nosso caso a config que fizemos
-*/
-}
+
+    // function showchart_doughnut() {
+
+    //     const data = {
+    //         labels: [
+    //             'Quanto você já bebeu',
+    //             'Meta',
+    //         ],
+    //         datasets: [{
+    //             data: [],
+    //             backgroundColor: [
+    //                 '#26998E',
+    //                 'rgba(0, 94, 189, 0.8)',
+    //             ],
+    //             hoverOffset: 4,
+    //         }],
+    //         options: {
+    //             maintainAspectRatio: true,
+    //         }
+    //     };
+    //     const config_doughnut = {
+    //         type: 'doughnut',
+    //         data: data,
+    //     };
+    //     var mydoughnut = new Chart(document.getElementById("myChart_doughnut"), config_doughnut);
+    // }
 </script>
 
 </html>

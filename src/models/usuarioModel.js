@@ -75,6 +75,24 @@ function buscar_estatisticas(id) {
     return database.executar(instrucao);
 }
 
+function armazenar_valorIdeal(id, valor) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function buscar_estatisticas():", id, valor);
+    var instrucao = `
+        update usuario set quantidade_ideal = ${valor} where id = ${id};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function buscar_quantidadeIdeal(id) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function buscar_estatisticas():", id);
+    var instrucao = `
+        select quantidade_ideal from usuario where id = ${id};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
@@ -84,4 +102,6 @@ module.exports = {
     apagar,
     buscar_informacoes,
     buscar_estatisticas,
+    armazenar_valorIdeal,
+    buscar_quantidadeIdeal,
 };

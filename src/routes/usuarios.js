@@ -41,4 +41,12 @@ router.post("/buscar_estatisticas", function (req, res) {
     usuarioController.buscar_estatisticas(req, res);
 });
 
+router.post("/armazenar_valorIdeal", function (req, res) {
+    usuarioController.armazenar_valorIdeal(req, res);
+});
+
+router.post("/buscar_quantidadeIdeal", function (req, res) {
+    usuarioController.buscar_quantidadeIdeal(req, res);
+});
+
 module.exports = router;

@@ -264,7 +264,7 @@ main .container{
     appearance: textfield;
  }
 
- .calculate section fieldset button{
+.calculate section fieldset button{
     margin-top: 03%;
     cursor: pointer;
     height: 2rem;
@@ -358,9 +358,9 @@ main .container{
 
 .panel{
     border: 2px solid #26998E;
-    width: 60%;
+    width: 35%;
     border-radius: 8px;
-    margin-left: 20%;
+    margin-left: 10%;
     height: 30vh;
     display: flex;
     justify-content: center;
@@ -368,6 +368,7 @@ main .container{
     justify-content: space-evenly;
     flex-direction: column;
     background-color:rgba(0, 94, 189, 0.4);
+    float: left;
 }
 
 .congration{
@@ -422,6 +423,21 @@ footer{
     color: #FFFFFF;
     font-weight: bold;
     border-top: 0.2rem solid #26998E;
+}
+
+.graph-doughnut{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0.5rem;
+    width: 40%;
+    height: 85vh;
+    float: left;
+    border: 3px solid #26998E;
+    margin-left: 51.5%;
+    position: absolute;
+    border-radius: 8px;
 }
 
 footer .social-networks{

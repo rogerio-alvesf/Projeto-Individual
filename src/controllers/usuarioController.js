@@ -205,6 +205,58 @@ function buscar_estatisticas(req, res) {
     }
 }
 
+function armazenar_valorIdeal(req, res) {
+    var id = req.body.id;
+    var valor = req.body.valor;
+
+    if (id == undefined){
+        res.status(400).send("Seu id está undefined!");
+    }else if (valor == undefined){
+        res.status(400).send("Seu valor ideal está undefined!");
+    }else {
+        usuarioModel.armazenar_valorIdeal(id, valor)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao solicitar as estatisticas! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function buscar_quantidadeIdeal(req, res) {
+    var id = req.body.id;
+
+    if (id == undefined){
+        res.status(400).send("Seu id está undefined!");
+    }else {
+        usuarioModel.buscar_quantidadeIdeal(id)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao solicitar valor ideal! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+
 module.exports = {
     entrar,
     cadastrar,
@@ -213,4 +265,6 @@ module.exports = {
     apagar,
     buscar_informacoes,
     buscar_estatisticas,
+    armazenar_valorIdeal,
+    buscar_quantidadeIdeal,
 }

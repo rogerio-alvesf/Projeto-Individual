@@ -6,6 +6,7 @@ var periodo = [];
 var quantidadeIdeal = 0;
 var dados = 0;
 var estatisticas = 0;
+var quantidadeAtual = 0;
 
 fetch("/usuarios/buscar_informacoes", {
     method: "POST",
@@ -16,7 +17,6 @@ fetch("/usuarios/buscar_informacoes", {
         id: id,
     })
 }).then(function (resposta) {
-
     if (resposta.ok) {
         resposta.json().then(json => {
             console.log(json);
@@ -25,22 +25,45 @@ fetch("/usuarios/buscar_informacoes", {
                 periodo.push(dados[contador].tempo);
                 valor.push(dados[contador].volume);
             }
-            showchart();
+            showchart_line();
         });
-
-
     } else {
-
         console.log("Houve um erro ao buscar as informações do usuario");
-
         resposta.text().then(texto => {
             console.error(texto);
         });
     }
-
 }).catch(function (erro) {
     console.log(erro);
 });
+
+fetch("/usuarios/buscar_quantidadeIdeal", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        id: id,
+    })
+}).then(function (resposta) {
+    if (resposta.ok) {
+        resposta.json().then(json => {
+            localStorage.setItem("VALOR IDEAL", json[0].quantidade_ideal);
+            id_idealValue.innerHTML = localStorage.getItem("VALOR IDEAL");
+        });
+    } else {
+        console.log("Houve um erro ao buscar as quantidade do usuario");
+        resposta.text().then(texto => {
+            console.error(texto);
+        });
+    }
+}).catch(function (erro) {
+    console.log(erro);
+});
+
+if(localStorage.getItem("VALOR IDEAL") == null){
+    id_idealValue.innerHTML = "0";
+}
 
 fetch("/usuarios/buscar_estatisticas", {
     method: "POST",
@@ -51,7 +74,6 @@ fetch("/usuarios/buscar_estatisticas", {
         id: id,
     })
 }).then(function (resposta) {
-
     if (resposta.ok) {
         resposta.json().then(json => {
             console.log((json));
@@ -66,23 +88,21 @@ fetch("/usuarios/buscar_estatisticas", {
             lowerValue.innerHTML = (json[0].lowerValue);
             highestValue.innerHTML = (json[0].highestValue);
             averageValue.innerHTML = (json[0].averageValue.toFixed(2));
+            quantidadeAtual = (json[0].sumValue);
             }
+            porcentagemValorRestante = Number((quantidadeAtual * 100 / Number(localStorage.getItem('VALOR IDEAL'))).toFixed(2));
         });
-
     } else {
-
         console.log("Houve um erro ao buscar as estatisticas do usuario");
-
         resposta.text().then(texto => {
             console.error(texto);
         });
     }
-
 }).catch(function (erro) {
     console.log(erro);
 });
 
-if (localStorage.getItem("VALOR IDEAL") == Number(sumValue.innerHTML)){
+if (localStorage.getItem("VALOR IDEAL") == quantidadeAtual){
     congration.style.display = "flex";
     id_main.style.filter.blur = "0.1rem";
 }
@@ -178,15 +198,37 @@ function calculate() {
 }
 
 function save_value() {
-    localStorage.setItem("VALOR IDEAL", quantidadeIdeal);
-    window.alert("Valor salvo com sucesso");
-    id_idealValue.innerHTML = quantidadeIdeal;
-}
-
-if(localStorage.getItem("VALOR IDEAL") != null){
-    id_idealValue.innerHTML = quantidadeIdeal;
-}else{
-    id_idealValue.innerHTML = "0";
+    fetch("/usuarios/armazenar_valorIdeal", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id: id,
+            valor: quantidadeIdeal,
+        })
+    }).then(function (resposta) {
+    
+        if (resposta.ok) {
+            resposta.json().then(json => {
+                console.log(json);
+                window.alert("Valor salvo com sucesso");
+                window.location = "dashboard.html";
+            });
+    
+    
+        } else {
+    
+            console.log("Houve um erro ao armazenar o valor ideal do usuario");
+    
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    
+    }).catch(function (erro) {
+        console.log(erro);
+    });
 }
 
 function contabilizar() {
