@@ -88,16 +88,6 @@ header .informations .seta img:hover{
     }
 }
 
-/*.marca{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #26998E;
-    clip-path: circle(600px at right 800px);
-}*/
-
 .menu{
     background-color: #26998E;
     height: 10.6vh;
@@ -129,10 +119,18 @@ header .informations .seta img:hover{
     font-weight: bold;
 }
 
+#id_main{
+    background-image: url("../images/dashboard-bg.jpg");
+    background-position: 100%;
+    background-size: cover;
+    margin-bottom: 65vh;
+    border-bottom: 0.5rem solid #26998E;
+}
+
 main .graph {
     margin-top: 1rem;
     margin-left: 10%;
-    background-color:rgba(0, 94, 189, 0.4);
+    background-color:#99bee5;
     display: inline-block;
     width: 80%;
     height: 50vh;
@@ -240,7 +238,7 @@ main .container{
     border-radius: 8px;
     font-weight: bold;
     border: 2px solid #26998E;
-    background-color:rgba(0, 94, 189, 0.4);
+    background-color:#99bee5;
 }
 
 .calculate section h2{
@@ -311,7 +309,7 @@ main .container{
     font-weight: bold;
     font-size: 1rem;
     border: 2px solid #26998E;
-    background-color:rgba(0, 94, 189, 0.4);
+    background-color:#99bee5;
 }
 
 .counter section h2{
@@ -359,15 +357,16 @@ main .container{
 .panel{
     border: 2px solid #26998E;
     width: 35%;
+    margin-top: 3%;
     border-radius: 8px;
     margin-left: 10%;
-    height: 30vh;
+    height: 45vh;
     display: flex;
     justify-content: center;
     align-items:center;
     justify-content: space-evenly;
     flex-direction: column;
-    background-color:rgba(0, 94, 189, 0.4);
+    background-color:#99bee5;
     float: left;
 }
 
@@ -412,8 +411,23 @@ main .container{
     box-shadow: none;
 }
 
+main .icon{
+    width: 35%;
+    height: 40vh;
+    position: absolute;
+    margin-left: 55%;
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .icon img{
+    height: 100%;
+    width: 70%;
+}
+
 footer{
-    margin-top: 110vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -423,21 +437,6 @@ footer{
     color: #FFFFFF;
     font-weight: bold;
     border-top: 0.2rem solid #26998E;
-}
-
-.graph-doughnut{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 0.5rem;
-    width: 40%;
-    height: 85vh;
-    float: left;
-    border: 3px solid #26998E;
-    margin-left: 51.5%;
-    position: absolute;
-    border-radius: 8px;
 }
 
 footer .social-networks{

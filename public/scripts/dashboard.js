@@ -25,6 +25,7 @@ fetch("/usuarios/buscar_informacoes", {
                 periodo.push(dados[contador].tempo);
                 valor.push(dados[contador].volume);
             }
+            amountValue.innerHTML = Number(dados.length);
             showchart_line();
         });
     } else {
@@ -49,7 +50,12 @@ fetch("/usuarios/buscar_quantidadeIdeal", {
     if (resposta.ok) {
         resposta.json().then(json => {
             localStorage.setItem("VALOR IDEAL", json[0].quantidade_ideal);
-            id_idealValue.innerHTML = localStorage.getItem("VALOR IDEAL");
+            if(localStorage.getItem("VALOR IDEAL") != null){
+                id_idealValue.innerHTML = localStorage.getItem("VALOR IDEAL");
+            }else{
+                id_idealValue.innerHTML = "0";
+            }
+            
         });
     } else {
         console.log("Houve um erro ao buscar as quantidade do usuario");
@@ -88,6 +94,11 @@ fetch("/usuarios/buscar_estatisticas", {
             lowerValue.innerHTML = (json[0].lowerValue);
             highestValue.innerHTML = (json[0].highestValue);
             averageValue.innerHTML = (json[0].averageValue.toFixed(2));
+                if(Number(localStorage.getItem("VALOR IDEAL") - (json[0].sumValue)) < 0){
+                    remainingValue.innerHTML = "Você já bateu sua meta do dia";
+                }else{
+                    remainingValue.innerHTML = Number(localStorage.getItem("VALOR IDEAL") - (json[0].sumValue));
+                }
             quantidadeAtual = (json[0].sumValue);
             }
             porcentagemValorRestante = Number((quantidadeAtual * 100 / Number(localStorage.getItem('VALOR IDEAL'))).toFixed(2));

@@ -57,7 +57,7 @@ header .container :hover{
 
 main{
     height: 89.5vh;
-    background-image: url("../images/workout.jpg");
+    background-image: url("../images/ocean.jpg");
     background-size: cover;
     display: flex;
     justify-content: center;

@@ -76,23 +76,24 @@
         <div class="panel">
             <h2>Confira como está sua jornada</h2>
             <p>
-                <span id="sp_idealValue">Quantidade ideal de água que você deve tomar: <span id="id_idealValue"
-                        style="font-weight: bold;"></span></span>
+                <span id="sp_idealValue">Quantidade ideal de água que você deve tomar: <span id="id_idealValue" style="font-weight: bold;"></span></span>
                 <br>
                 Você já bebeu: <span id="sumValue" style="font-weight: bold;"></span>
+                <br>
+                Ainda falta você deber: <span id="remainingValue" style="font-weight: bold;"></span>
+                <br>
+                Quantas vezes você bebeu água hoje: <span id="amountValue" style="font-weight: bold;"></span>
                 <br>
                 Menor quantidade de água que você bebeu: <span id="lowerValue" style="font-weight: bold;"></span>
                 <br>
                 Maior quantidade de água que você bebeu: <span id="highestValue" style="font-weight: bold;"></span>
                 <br>
-                Quantidade média de água que você toma por hora: <span id="averageValue"
-                    style="font-weight: bold;"></span>
+                Quantidade média de água que você já tomou: <span id="averageValue" style="font-weight: bold;"></span>
             </p>
         </div>
-        <!-- <div class="graph-doughnut">
-            <h3>Quanto falta</h3>
-            <canvas id="myChart_doughnut" style="width: 100%; height: 100%"></canvas>
-        </div> -->
+        <div class="icon">
+            <img src="images/icon-glass-of-water.png">
+        </div>
     </main>
     <footer>
         <p>Todos os direitos reservados &copy;Rogerio Alves Filho</p>
@@ -163,33 +164,6 @@
         }
         var myChartLine = new Chart(document.getElementById("myChart"), config);
     }
-
-
-    // function showchart_doughnut() {
-
-    //     const data = {
-    //         labels: [
-    //             'Quanto você já bebeu',
-    //             'Meta',
-    //         ],
-    //         datasets: [{
-    //             data: [],
-    //             backgroundColor: [
-    //                 '#26998E',
-    //                 'rgba(0, 94, 189, 0.8)',
-    //             ],
-    //             hoverOffset: 4,
-    //         }],
-    //         options: {
-    //             maintainAspectRatio: true,
-    //         }
-    //     };
-    //     const config_doughnut = {
-    //         type: 'doughnut',
-    //         data: data,
-    //     };
-    //     var mydoughnut = new Chart(document.getElementById("myChart_doughnut"), config_doughnut);
-    // }
 </script>
 
 </html>
