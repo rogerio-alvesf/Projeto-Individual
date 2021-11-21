@@ -43,6 +43,11 @@
         </div>
     </div>
     <main id="id_main">
+        <div class="congration" id="congration">
+            <h1>Parabéns pela consquista <span id="sp_nick_usuario"></span></h1>
+            <img class="trophy" src="images/trophy.gif">
+            <button class="bt-congration" onclick="close_congration()">FECHAR</button>
+        </div>
         <div class="container">
             <div class="graph">
                 <canvas id="myChart" style="width: 100%; height: 100%"></canvas>
@@ -71,22 +76,16 @@
         <div class="panel">
             <h2>Confira como está sua jornada</h2>
             <p>
-                <span id="sp_idealValue">Quantidade ideal de água que você deve tomar:<span
-                        id="idealValue"></span></span>
+                <span id="sp_idealValue">Quantidade ideal de água que você deve tomar: <span id="idealValue"></span></span>
                 <br>
-                Você já bebeu:<span id="sumValue"></span>
+                Você já bebeu: <span id="sumValue"></span>
                 <br>
-                Menor quantidade de água que você bebeu:<span id="lowerValue"></span>
+                Menor quantidade de água que você bebeu: <span id="lowerValue"></span>
                 <br>
-                Maior quantidade de água que você bebeu:<span id="highestValue"></span>
+                Maior quantidade de água que você bebeu: <span id="highestValue"></span>
                 <br>
-                Quantidade média de água que você toma por hora:<span id="averageValue"></span>
+                Quantidade média de água que você toma por hora: <span id="averageValue"></span>
             </p>
-        </div>
-        <div class="congration" id="congration">
-            <h1>Parabéns pela consquista</h1>
-            <img class="trophy" src="images/trophy.gif">
-            <button class="bt-congration" onclick="close_congration()">FECHAR</button>
         </div>
     </main>
     <footer>
@@ -109,7 +108,8 @@
 </body>
 <script>
     nick_usuario.innerHTML = localStorage.getItem("NOME"); 
-
+    sp_nick_usuario.innerHTML = localStorage.getItem("NOME");
+function showchart(){
     // Inicia uma variável do tipo constante (não pode ser reatribuida)
     const config = {
         type: "line", // tipo do gráfico
@@ -163,6 +163,7 @@
 e passar dentro dos (parênteses) o elemento canvas que você quer mandar e
 separado pela virgula o que você quer mandar, no nosso caso a config que fizemos
 */
+}
 </script>
 
 </html>

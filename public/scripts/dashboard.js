@@ -5,13 +5,7 @@ var valor = [];
 var periodo = [];
 var quantidadeIdeal = 0;
 var dados = 0;
-
-// if(localStorage.getItem("VALOR IDEAL") == null){
-//     sp_idealValue.style.display = "none";
-// }else{
-//     sp_idealValue.style.display = "block";
-//     idealValue.innerHTML = quantidadeIdeal;
-// }
+var estatisticas = 0;
 
 fetch("/usuarios/buscar_informacoes", {
     method: "POST",
@@ -31,12 +25,7 @@ fetch("/usuarios/buscar_informacoes", {
                 periodo.push(dados[contador].tempo);
                 valor.push(dados[contador].volume);
             }
-            myChart.update();
-            //localStorage.setItem("DADOS",JSON.stringify(json));
-            // localStorage.getItem("DADOS", JSON.parse(JSON.stringify(json))).forEach((row, index) => {
-            // periodo.push(row.tempo);
-            // valor.push(row.volume);
-            // });
+            showchart();
         });
 
 
@@ -65,12 +54,14 @@ fetch("/usuarios/buscar_estatisticas", {
 
     if (resposta.ok) {
         resposta.json().then(json => {
-            console.log(JSON.stringify(json));
-            sumValue.innerHTML = JSON.stringify(json.sumValue);
-            lowerValue.innerHTML = JSON.stringify(json.lowerValue);
-            highestValue.innerHTML = JSON.stringify(json.highestValue);
-            averageValue.innerHTML = JSON.stringify(json.averageValue);
-            if (JSON.stringify(json.sumValue) == localStorage.getItem("VALOR IDEAL")) {
+            console.log((json));
+            estatisticas = (json);
+            sumValue.innerHTML = `<b>${(json[0].sumValue)}</b>`;
+            lowerValue.innerHTML = `<b>${(json[0].lowerValue)}</b>`;
+            highestValue.innerHTML = `<b>${(json[0].highestValue)}</b>`;
+            averageValue.innerHTML = `<b>${(json[0].averageValue.toFixed(2))}</b>`;
+            
+            if ( (json[0].sumValue) == localStorage.getItem("VALOR IDEAL")) {
                 congration.style.display = "flex";
                 id_main.style.filter.blur = "0.1rem";
             }
@@ -88,6 +79,10 @@ fetch("/usuarios/buscar_estatisticas", {
 }).catch(function (erro) {
     console.log(erro);
 });
+
+function close_congration(){
+    congration.style.display = "none";
+}
 
 function open_menu() {
     menu.style.display = "block";
@@ -178,10 +173,11 @@ function calculate() {
 function save_value() {
     localStorage.setItem("VALOR IDEAL", quantidadeIdeal);
     window.alert("Valor salvo com sucesso");
+    idealValue.innerHTML = `<b>${quantidadeIdeal}</b>`;
 }
 
-function limparFormulario() {
-    document.getElementById("form_login").reset();
+if(localStorage.getItem("VALOR IDEAL") != null){
+    idealValue.innerHTML = `<b>${quantidadeIdeal}</b>`;
 }
 
 function contabilizar() {
