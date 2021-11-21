@@ -21,7 +21,7 @@ fetch("/usuarios/buscar_informacoes", {
         resposta.json().then(json => {
             console.log(json);
             dados = (json);
-            for(var contador = 0; contador < dados.length; contador ++){
+            for (var contador = 0; contador < dados.length; contador++) {
                 periodo.push(dados[contador].tempo);
                 valor.push(dados[contador].volume);
             }
@@ -50,12 +50,12 @@ fetch("/usuarios/buscar_quantidadeIdeal", {
     if (resposta.ok) {
         resposta.json().then(json => {
             localStorage.setItem("VALOR IDEAL", json[0].quantidade_ideal);
-            if(localStorage.getItem("VALOR IDEAL") != null){
+            if (localStorage.getItem("VALOR IDEAL") != null) {
                 id_idealValue.innerHTML = localStorage.getItem("VALOR IDEAL");
-            }else{
+            } else {
                 id_idealValue.innerHTML = "0";
             }
-            
+
         });
     } else {
         console.log("Houve um erro ao buscar as quantidade do usuario");
@@ -67,7 +67,7 @@ fetch("/usuarios/buscar_quantidadeIdeal", {
     console.log(erro);
 });
 
-if(localStorage.getItem("VALOR IDEAL") == null){
+if (localStorage.getItem("VALOR IDEAL") == null) {
     id_idealValue.innerHTML = "0";
 }
 
@@ -84,22 +84,22 @@ fetch("/usuarios/buscar_estatisticas", {
         resposta.json().then(json => {
             console.log((json));
             estatisticas = (json);
-            if((json[0].sumValue) == null || (json[0].lowerValue) == null || (json[0].highestValue) == null || (json[0].averageValue) == null){
+            if ((json[0].sumValue) == null || (json[0].lowerValue) == null || (json[0].highestValue) == null || (json[0].averageValue) == null) {
                 sumValue.innerHTML = "0";
                 lowerValue.innerHTML = "0";
                 highestValue.innerHTML = "0";
                 averageValue.innerHTML = "0";
-            }else{
-            sumValue.innerHTML = (json[0].sumValue);
-            lowerValue.innerHTML = (json[0].lowerValue);
-            highestValue.innerHTML = (json[0].highestValue);
-            averageValue.innerHTML = (json[0].averageValue.toFixed(2));
-                if(Number(localStorage.getItem("VALOR IDEAL") - (json[0].sumValue)) < 0){
+            } else {
+                sumValue.innerHTML = (json[0].sumValue);
+                lowerValue.innerHTML = (json[0].lowerValue);
+                highestValue.innerHTML = (json[0].highestValue);
+                averageValue.innerHTML = (json[0].averageValue.toFixed(2));
+                if (Number(localStorage.getItem("VALOR IDEAL") - (json[0].sumValue)) < 0) {
                     remainingValue.innerHTML = "Você já bateu sua meta do dia";
-                }else{
+                } else {
                     remainingValue.innerHTML = Number(localStorage.getItem("VALOR IDEAL") - (json[0].sumValue));
                 }
-            quantidadeAtual = (json[0].sumValue);
+                quantidadeAtual = (json[0].sumValue);
             }
             porcentagemValorRestante = Number((quantidadeAtual * 100 / Number(localStorage.getItem('VALOR IDEAL'))).toFixed(2));
         });
@@ -113,12 +113,12 @@ fetch("/usuarios/buscar_estatisticas", {
     console.log(erro);
 });
 
-if (localStorage.getItem("VALOR IDEAL") == quantidadeAtual){
+if (localStorage.getItem("VALOR IDEAL") == quantidadeAtual) {
     congration.style.display = "flex";
     id_main.style.filter.blur = "0.1rem";
 }
 
-function close_congration(){
+function close_congration() {
     congration.style.display = "none";
 }
 
@@ -219,24 +219,24 @@ function save_value() {
             valor: quantidadeIdeal,
         })
     }).then(function (resposta) {
-    
+
         if (resposta.ok) {
             resposta.json().then(json => {
                 console.log(json);
                 window.alert("Valor salvo com sucesso");
                 window.location = "dashboard.html";
             });
-    
-    
+
+
         } else {
-    
+
             console.log("Houve um erro ao armazenar o valor ideal do usuario");
-    
+
             resposta.text().then(texto => {
                 console.error(texto);
             });
         }
-    
+
     }).catch(function (erro) {
         console.log(erro);
     });
@@ -283,43 +283,86 @@ function contabilizar() {
 
 function modificar() {
 
-    fetch("/usuarios/modificar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            novo_nome: novo_nome.value,
-            novo_email: novo_email.value,
-            nome: nome_perfil,
-            id: id,
-        })
-    }).then(function (resposta) {
-        console.log(`MODIFICOU NO THEN DO ${nome_perfil.toUpperCase()}!`);
+    if (novo_email.value == "" && novo_nome.value == "") {
+        window.alert("Preencha algum campo para pode realizar uma alteração");
+    } else if (novo_email.value == "") {
+        novo_email.value = email;
+        fetch("/usuarios/modificar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                novo_nome: novo_nome.value,
+                novo_email: novo_email.value,
+                nome: nome_perfil,
+                id: id,
+            })
+        }).then(function (resposta) {
+            console.log(`MODIFICOU NO THEN DO ${nome_perfil.toUpperCase()}!`);
 
-        if (resposta.ok) {
-            console.log(resposta);
-            resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-                console.log(`SEU NOVO NOME DE USUÁRIO SERÁ: ${novo_nome.value}`);
-                console.log(`SEU NOVO EMAIL DE USUÁRIO SERÁ: ${novo_email.value}`);
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    console.log(`SEU NOVO NOME DE USUÁRIO SERÁ: ${novo_nome.value}`);
+                    console.log(`SEU NOVO EMAIL DE USUÁRIO SERÁ: ${novo_email.value}`);
+                    window.alert("Faça login novamente para que possamos finzalizar as modificações na sua conta");
+                    localStorage.clear();
+                    window.location = "login.html";
+                });
+            } else {
+
+                console.log("Houve um erro ao tentar modificar!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    }else if(novo_nome.value == ""){
+        novo_nome.value = nome;
+        fetch("/usuarios/modificar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                novo_nome: novo_nome.value,
+                novo_email: novo_email.value,
+                nome: nome_perfil,
+                id: id,
+            })
+        }).then(function (resposta) {
+            console.log(`MODIFICOU NO THEN DO ${nome_perfil.toUpperCase()}!`);
+
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(`SEU NOVO NOME DE USUÁRIO SERÁ: ${novo_nome.value}`);
+                    console.log(`SEU NOVO EMAIL DE USUÁRIO SERÁ: ${novo_email.value}`);
+                });
                 window.alert("Faça login novamente para que possamos finzalizar as modificações na sua conta");
                 localStorage.clear();
-                window.location = "login.html";
-            });
-        } else {
+                window.location = "login";
+            } else {
 
-            console.log("Houve um erro ao tentar modificar!");
+                console.log("Houve um erro ao tentar modificar!");
 
-            resposta.text().then(texto => {
-                console.error(texto);
-            });
-        }
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
 
-    }).catch(function (erro) {
-        console.log(erro);
-    })
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    }
 }
 
 function apagar() {

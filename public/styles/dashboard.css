@@ -284,9 +284,10 @@ main .container{
     margin-top: 03%;
     display: none;
     font-size: 1.5rem;
-    border: 2px solid #26998E;
     border-radius: 8px;
     margin-bottom: 23%;
+    color: #FFFFFF;
+    background-color: #26998E;
 }
 
 .counter{
