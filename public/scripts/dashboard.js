@@ -56,14 +56,16 @@ fetch("/usuarios/buscar_estatisticas", {
         resposta.json().then(json => {
             console.log((json));
             estatisticas = (json);
-            sumValue.innerHTML = `<b>${(json[0].sumValue)}</b>`;
-            lowerValue.innerHTML = `<b>${(json[0].lowerValue)}</b>`;
-            highestValue.innerHTML = `<b>${(json[0].highestValue)}</b>`;
-            averageValue.innerHTML = `<b>${(json[0].averageValue.toFixed(2))}</b>`;
-            
-            if ( (json[0].sumValue) == localStorage.getItem("VALOR IDEAL")) {
-                congration.style.display = "flex";
-                id_main.style.filter.blur = "0.1rem";
+            if((json[0].sumValue) == null || (json[0].lowerValue) == null || (json[0].highestValue) == null || (json[0].averageValue) == null){
+                sumValue.innerHTML = "0";
+                lowerValue.innerHTML = "0";
+                highestValue.innerHTML = "0";
+                averageValue.innerHTML = "0";
+            }else{
+            sumValue.innerHTML = (json[0].sumValue);
+            lowerValue.innerHTML = (json[0].lowerValue);
+            highestValue.innerHTML = (json[0].highestValue);
+            averageValue.innerHTML = (json[0].averageValue.toFixed(2));
             }
         });
 
@@ -79,6 +81,11 @@ fetch("/usuarios/buscar_estatisticas", {
 }).catch(function (erro) {
     console.log(erro);
 });
+
+if (localStorage.getItem("VALOR IDEAL") == Number(sumValue.innerHTML)){
+    congration.style.display = "flex";
+    id_main.style.filter.blur = "0.1rem";
+}
 
 function close_congration(){
     congration.style.display = "none";
@@ -173,11 +180,13 @@ function calculate() {
 function save_value() {
     localStorage.setItem("VALOR IDEAL", quantidadeIdeal);
     window.alert("Valor salvo com sucesso");
-    idealValue.innerHTML = `<b>${quantidadeIdeal}</b>`;
+    id_idealValue.innerHTML = quantidadeIdeal;
 }
 
 if(localStorage.getItem("VALOR IDEAL") != null){
-    idealValue.innerHTML = `<b>${quantidadeIdeal}</b>`;
+    id_idealValue.innerHTML = quantidadeIdeal;
+}else{
+    id_idealValue.innerHTML = "0";
 }
 
 function contabilizar() {
