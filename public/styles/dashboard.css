@@ -381,7 +381,7 @@ main .container{
     height: 90vh;
     background-image: url("../images/confetti.gif");
     background-position: center;
-    position:absolute;
+    position:fixed;
 }
 
 .congration h1{

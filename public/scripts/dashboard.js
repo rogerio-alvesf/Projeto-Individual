@@ -94,8 +94,10 @@ fetch("/usuarios/buscar_estatisticas", {
                 lowerValue.innerHTML = (json[0].lowerValue);
                 highestValue.innerHTML = (json[0].highestValue);
                 averageValue.innerHTML = (json[0].averageValue.toFixed(2));
-                if (Number(localStorage.getItem("VALOR IDEAL") - (json[0].sumValue)) < 0) {
+                if (Number(localStorage.getItem("VALOR IDEAL") - (json[0].sumValue)) <= 0) {
                     remainingValue.innerHTML = "Você já bateu sua meta do dia";
+                    congration.style.display = "flex";
+                    id_main.style.filter.blur = "0.1rem";
                 } else {
                     remainingValue.innerHTML = Number(localStorage.getItem("VALOR IDEAL") - (json[0].sumValue));
                 }
@@ -112,11 +114,6 @@ fetch("/usuarios/buscar_estatisticas", {
 }).catch(function (erro) {
     console.log(erro);
 });
-
-if (localStorage.getItem("VALOR IDEAL") == quantidadeAtual) {
-    congration.style.display = "flex";
-    id_main.style.filter.blur = "0.1rem";
-}
 
 function close_congration() {
     congration.style.display = "none";
@@ -324,7 +321,7 @@ function modificar() {
         }).catch(function (erro) {
             console.log(erro);
         })
-    }else if(novo_nome.value == ""){
+    } else if (novo_nome.value == "") {
         novo_nome.value = nome;
         fetch("/usuarios/modificar", {
             method: "POST",
