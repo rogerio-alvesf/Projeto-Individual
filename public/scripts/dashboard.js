@@ -50,7 +50,7 @@ fetch("/usuarios/buscar_quantidadeIdeal", {
     if (resposta.ok) {
         resposta.json().then(json => {
             localStorage.setItem("VALOR IDEAL", json[0].quantidade_ideal);
-            if (localStorage.getItem("VALOR IDEAL") != null) {
+            if (localStorage.getItem("VALOR IDEAL") != "null") {
                 id_idealValue.innerHTML = localStorage.getItem("VALOR IDEAL");
             } else {
                 id_idealValue.innerHTML = "0";
@@ -66,10 +66,6 @@ fetch("/usuarios/buscar_quantidadeIdeal", {
 }).catch(function (erro) {
     console.log(erro);
 });
-
-if (localStorage.getItem("VALOR IDEAL") == null) {
-    id_idealValue.innerHTML = "0";
-}
 
 fetch("/usuarios/buscar_estatisticas", {
     method: "POST",
@@ -136,6 +132,12 @@ function alterar_conta() {
 
 function close_manage_account_option() {
     manage_account.style.display = "none";
+}
+
+function confirm_modification() {
+    window.alert("Faça login novamente para que possamos finzalizar as modificações na sua conta");
+    localStorage.clear();
+    window.location = "login";
 }
 
 function calculate() {
@@ -279,7 +281,6 @@ function contabilizar() {
 }
 
 function modificar() {
-
     if (novo_email.value == "" && novo_nome.value == "") {
         window.alert("Preencha algum campo para pode realizar uma alteração");
     } else if (novo_email.value == "") {
@@ -296,31 +297,21 @@ function modificar() {
                 id: id,
             })
         }).then(function (resposta) {
-            console.log(`MODIFICOU NO THEN DO ${nome_perfil.toUpperCase()}!`);
-
+            confirm_modification()
             if (resposta.ok) {
                 console.log(resposta);
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    console.log(`SEU NOVO NOME DE USUÁRIO SERÁ: ${novo_nome.value}`);
-                    console.log(`SEU NOVO EMAIL DE USUÁRIO SERÁ: ${novo_email.value}`);
-                    window.alert("Faça login novamente para que possamos finzalizar as modificações na sua conta");
-                    localStorage.clear();
-                    window.location = "login.html";
-                });
+                confirm_modification();
             } else {
-
-                console.log("Houve um erro ao tentar modificar!");
-
+                console.log("Houve um erro ao tentar modificar as informações da conta!");
                 resposta.text().then(texto => {
                     console.error(texto);
                 });
             }
-
         }).catch(function (erro) {
             console.log(erro);
         })
+    } else if (novo_email.value.indexOf("@") == -1 || novo_email.value.indexOf(".com") == -1) {
+        window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
     } else if (novo_nome.value == "") {
         novo_nome.value = nome;
         fetch("/usuarios/modificar", {
@@ -335,27 +326,40 @@ function modificar() {
                 id: id,
             })
         }).then(function (resposta) {
-            console.log(`MODIFICOU NO THEN DO ${nome_perfil.toUpperCase()}!`);
-
             if (resposta.ok) {
                 console.log(resposta);
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(`SEU NOVO NOME DE USUÁRIO SERÁ: ${novo_nome.value}`);
-                    console.log(`SEU NOVO EMAIL DE USUÁRIO SERÁ: ${novo_email.value}`);
-                });
-                window.alert("Faça login novamente para que possamos finzalizar as modificações na sua conta");
-                localStorage.clear();
-                window.location = "login";
+                confirm_modification();
             } else {
-
-                console.log("Houve um erro ao tentar modificar!");
-
+                console.log("Houve um erro ao tentar modificar as informações da conta!");
                 resposta.text().then(texto => {
                     console.error(texto);
                 });
             }
-
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    } else {
+        fetch("/usuarios/modificar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                novo_nome: novo_nome.value,
+                novo_email: novo_email.value,
+                nome: nome_perfil,
+                id: id,
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                console.log(resposta);
+                confirm_modification()
+            } else {
+                console.log("Houve um erro ao tentar modificar as informações da conta!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
         }).catch(function (erro) {
             console.log(erro);
         })
