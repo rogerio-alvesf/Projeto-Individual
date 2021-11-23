@@ -373,7 +373,7 @@ function apagar() {
     } else {
         var confirmacao = window.prompt("Digite confirar para deletar sua conta de forma permanente", "CONFIRMAR");
         if (confirmacao.toUpperCase().trim() == "CONFIRMAR") {
-            fetch("/usuarios/apagar", {
+            fetch("/usuarios/apagar_dados", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -384,11 +384,30 @@ function apagar() {
             }).then(function (resposta) {
                 if (resposta.ok) {
                     console.log(resposta);
-                    window.alert(`${novo_nome.value} SUA CONTA FOI DELETADA COM SUCESSO`);
-                    setTimeout(function () {
-                        localStorage.clear();
-                        window.location = "index.html";
-                    }, 1000);
+                } else {
+                    console.log("Houve um erro ao tentar deletar as informações da sua conta!");
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+            fetch("/usuarios/apagar_conta", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id: id,
+                })
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    console.log(resposta);
+                    window.alert(`${nome_perfil} SUA CONTA FOI DELETADA COM SUCESSO`);
+                    localStorage.clear();
+                    window.location = "login.html";
                 } else {
                     console.log("Houve um erro ao tentar deletar sua conta!");
                     resposta.text().then(texto => {

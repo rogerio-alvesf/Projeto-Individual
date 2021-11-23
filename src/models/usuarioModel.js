@@ -47,10 +47,17 @@ function modificar(nome, novo_nome, novo_email, id) {
     return database.executar(instrucao);
 }
 
-function apagar(id) {
-    console.log("DELETEI A CONTA DO USUÁRIO \n function apagar():", id);
+function apagar_dados(id) {
+    console.log("DELETEI OS DADOS DO USUÁRIO \n function apagar():", id);
     var instrucao = `
     DELETE FROM quantidade_agua WHERE fkusuario = ${id};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+function apagar_conta(id) {
+    console.log("DELETEI A CONTA DO USUÁRIO \n function apagar():", id);
+    var instrucao = `
     DELETE FROM usuario WHERE id = ${id};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -99,7 +106,8 @@ module.exports = {
     listar,
     contabilizar,
     modificar,
-    apagar,
+    apagar_dados,
+    apagar_conta,
     buscar_informacoes,
     buscar_estatisticas,
     armazenar_valorIdeal,

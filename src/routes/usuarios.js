@@ -29,8 +29,12 @@ router.post("/modificar", function (req,res){
     usuarioController.modificar(req, res);
 });
 
-router.post("/apagar", function (req, res) {
-    usuarioController.apagar(req, res);
+router.post("/apagar_dados", function (req, res) {
+    usuarioController.apagar_dados(req, res);
+});
+
+router.post("/apagar_conta", function (req, res) {
+    usuarioController.apagar_conta(req, res);
 });
 
 router.post("/buscar_informacoes", function (req, res) {

@@ -133,13 +133,37 @@ function modificar(req, res) {
 }
 
 //Função de apagar a conta
-function apagar(req, res) {
+function apagar_dados(req, res) {
     var id = req.body.id;
 
     if (id == undefined){
         res.status(400).send("Seu id está undefined!");
     }else {
-        usuarioModel.apagar(id)
+        usuarioModel.apagar_dados(id)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao deletar os dados da conta! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function apagar_conta(req, res) {
+    var id = req.body.id;
+
+    if (id == undefined){
+        res.status(400).send("Seu id está undefined!");
+    }else {
+        usuarioModel.apagar_conta(id)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -262,7 +286,8 @@ module.exports = {
     cadastrar,
     contabilizar,
     modificar,
-    apagar,
+    apagar_dados,
+    apagar_conta,
     buscar_informacoes,
     buscar_estatisticas,
     armazenar_valorIdeal,
