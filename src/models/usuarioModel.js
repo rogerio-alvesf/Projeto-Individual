@@ -1,7 +1,7 @@
 var database = require("../database/config")
 
 function listar() {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    console.log("INFORMAÇÕES DO USUÁRIO\n function listar()");
     var instrucao = `
         SELECT * FROM usuario;
     `;
@@ -10,7 +10,7 @@ function listar() {
 }
 
 function entrar(email, senha) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
+    console.log("REALIZEI LOGIN\n function entrar(): ", email, senha)
     var instrucao = `
         SELECT * FROM usuario WHERE email = '${email}' AND senha = '${senha}';
     `;
@@ -19,7 +19,7 @@ function entrar(email, senha) {
 }
 
 function cadastrar(nome, email, senha) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
+    console.log("CADASTREI UM USUÁRIO\n function cadastrar():", nome, email, senha);
     var instrucao = `
         INSERT INTO usuario (nome, email, senha) VALUES ('${nome}', '${email}', '${senha}');
     `;
@@ -27,10 +27,9 @@ function cadastrar(nome, email, senha) {
     return database.executar(instrucao);
 }
 
-
 //Função de inserir quantidade de água
 function contabilizar(id, tempo, quantidade) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", id, tempo, quantidade);
+    console.log("ARMAZENEI DADOS DO USUÁRIO PART.1\n function cadastrar():", id, tempo, quantidade);
     var instrucao = `
         INSERT INTO quantidade_agua (tempo,volume, fkusuario) VALUES ('${tempo}', '${quantidade}', ${id});
     `;
@@ -40,54 +39,55 @@ function contabilizar(id, tempo, quantidade) {
 
 //Função de atualizar informações da conta
 function modificar(nome, novo_nome, novo_email, id) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function modificar():", nome, novo_nome, novo_email, id);
+    console.log("MODIFIQUEI DADOS DA CONTA DO USUÁRIO\n function modificar():", nome, novo_nome, novo_email, id);
     var instrucao = `
-        update usuario set nome = '${novo_nome}', email = '${novo_email}' where id = ${id};
+        UPDATE usuario SET nome = '${novo_nome}', email = '${novo_email}' WHERE id = ${id};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
 function apagar(id) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function apagar():", id);
+    console.log("DELETEI A CONTA DO USUÁRIO \n function apagar():", id);
     var instrucao = `
-    delete from usuario where id = ${id};
+    DELETE FROM quantidade_agua WHERE fkusuario = ${id};
+    DELETE FROM usuario WHERE id = ${id};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
 function buscar_informacoes(id) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function buscar_informacoes():", id);
+    console.log("BUSQUEI INFORMAÇÕES DO USUÁRIO PART.1\n function buscar_informacoes():", id);
     var instrucao = `
-    select tempo, volume from quantidade_agua where fkusuario = ${id};
+    SELECT tempo, volume FROM quantidade_agua WHERE fkusuario = ${id};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
 function buscar_estatisticas(id) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function buscar_estatisticas():", id);
+    console.log("BUSQUEI INFORMAÇÕES DO USUÁRIO PART.2 \n function buscar_estatisticas():", id);
     var instrucao = `
-    select sum(volume) as 'sumValue', min(volume) as 'lowerValue', max(volume) as 'highestValue', avg(volume) as 'averageValue' from quantidade_agua where fkusuario = ${id};
+    SELECT sum(volume) AS 'sumValue', min(volume) AS 'lowerValue', max(volume) AS 'highestValue', avg(volume) AS 'averageValue' FROM quantidade_agua WHERE fkusuario = ${id};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
 function armazenar_valorIdeal(id, valor) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function buscar_estatisticas():", id, valor);
+    console.log("ARMAZENEI DADOS DO USUÁRIO PART.2 \n function buscar_estatisticas():", id, valor);
     var instrucao = `
-        update usuario set quantidade_ideal = ${valor} where id = ${id};
+        UPDATE usuario SET quantidade_ideal = ${valor} WHERE id = ${id};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
 function buscar_quantidadeIdeal(id) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function buscar_estatisticas():", id);
+    console.log("BUSQUEI INFORMAÇÕES DO USUÁRIO PART.3\n function buscar_estatisticas():", id);
     var instrucao = `
-        select quantidade_ideal from usuario where id = ${id};
+        SELECT quantidade_ideal FROM usuario WHERE id = ${id};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

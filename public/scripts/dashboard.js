@@ -345,8 +345,8 @@ function modificar() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                novo_nome: novo_nome.value,
-                novo_email: novo_email.value,
+                novo_nome: novo_nome.value.trim(),
+                novo_email: novo_email.value.trim(),
                 nome: nome_perfil,
                 id: id,
             })
@@ -385,24 +385,16 @@ function apagar() {
                 if (resposta.ok) {
                     console.log(resposta);
                     window.alert(`${novo_nome.value} SUA CONTA FOI DELETADA COM SUCESSO`);
-
-                    resposta.json().then(json => {
-                        console.log(json);
-                        console.log(JSON.stringify(json));
-                    });
                     setTimeout(function () {
                         localStorage.clear();
                         window.location = "index.html";
                     }, 1000);
                 } else {
-
                     console.log("Houve um erro ao tentar deletar sua conta!");
-
                     resposta.text().then(texto => {
                         console.error(texto);
                     });
                 }
-
             }).catch(function (erro) {
                 console.log(erro);
             })

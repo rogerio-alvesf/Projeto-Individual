@@ -201,11 +201,9 @@ main .container{
     height: 2.5rem;
     width: 40%;
     border-radius: 8px;
-    border: 1px solid #000000;
+    border: none;
     background-color: #26998E;
-    color: #000000;
     font-size: 1rem;
-    font-weight: bold;
 }
 
 .manage-account button:hover{
@@ -416,7 +414,7 @@ main .icon{
     width: 35%;
     height: 40vh;
     position: absolute;
-    margin-left: 55%;
+    margin-left: 60%;
     margin-top: 10vh;
     display: flex;
     justify-content: center;
@@ -425,7 +423,7 @@ main .icon{
 
 main .icon img{
     height: 100%;
-    width: 70%;
+    width: 55%;
 }
 
 footer{
