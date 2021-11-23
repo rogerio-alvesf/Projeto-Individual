@@ -28,10 +28,8 @@ function entrar() {
         body: formulario
     }).then(function (resposta) {
         console.log("ESTOU NO THEN DO entrar()!")
-
         if (resposta.ok) {
             console.log(resposta);
-
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
@@ -47,12 +45,9 @@ function entrar() {
             });
 
         } else {
-
-            console.log("Houve um erro ao tentar realizar o login!");
-
+            window.alert("Houve um erro ao tentar realizar o login!");
             resposta.text().then(texto => {
                 console.error(texto);
-                finalizarAguardar(texto);
             });
         }
 
@@ -76,6 +71,6 @@ function validarSessao() {
 
 function sair() {
     localStorage.clear();
-    window.location = "login.html";
+    window.location = "./login.html";
 }
 

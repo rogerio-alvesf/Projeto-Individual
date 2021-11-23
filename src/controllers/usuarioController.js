@@ -1,8 +1,8 @@
 var usuarioModel = require("../models/usuarioModel");
 
 function entrar(req, res) {
-    var email = req.body.email;
-    var senha = req.body.senha;
+    var email = req.body.email.trim().toLowerCase();
+    var senha = req.body.senha.trim();
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -36,9 +36,9 @@ function entrar(req, res) {
 }
 
 function cadastrar(req, res) {
-    var nome = req.body.nome;
-    var email = req.body.email;
-    var senha = req.body.senha;
+    var nome = req.body.nome.trim();
+    var email = req.body.email.trim().toLowerCase();
+    var senha = req.body.senha.trim();
 
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");

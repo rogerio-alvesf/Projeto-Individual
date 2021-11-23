@@ -85,6 +85,7 @@ fetch("/usuarios/buscar_estatisticas", {
                 lowerValue.innerHTML = "0";
                 highestValue.innerHTML = "0";
                 averageValue.innerHTML = "0";
+                remainingValue.innerHTML = "0";
             } else {
                 sumValue.innerHTML = (json[0].sumValue);
                 lowerValue.innerHTML = (json[0].lowerValue);
@@ -132,12 +133,6 @@ function alterar_conta() {
 
 function close_manage_account_option() {
     manage_account.style.display = "none";
-}
-
-function confirm_modification() {
-    window.alert("Faça login novamente para que possamos finzalizar as modificações na sua conta");
-    localStorage.clear();
-    window.location = "login";
 }
 
 function calculate() {
@@ -283,6 +278,7 @@ function contabilizar() {
 function modificar() {
     if (novo_email.value == "" && novo_nome.value == "") {
         window.alert("Preencha algum campo para pode realizar uma alteração");
+        event.preventDefault();
     } else if (novo_email.value == "") {
         novo_email.value = email;
         fetch("/usuarios/modificar", {
@@ -297,10 +293,11 @@ function modificar() {
                 id: id,
             })
         }).then(function (resposta) {
-            confirm_modification()
+
             if (resposta.ok) {
                 console.log(resposta);
-                confirm_modification();
+                window.alert("Faça login novamente para que possamos finzalizar as modificações na sua conta");
+                sair();
             } else {
                 console.log("Houve um erro ao tentar modificar as informações da conta!");
                 resposta.text().then(texto => {
@@ -328,7 +325,8 @@ function modificar() {
         }).then(function (resposta) {
             if (resposta.ok) {
                 console.log(resposta);
-                confirm_modification();
+                window.alert("Faça login novamente para que possamos finzalizar as modificações na sua conta");
+                sair();
             } else {
                 console.log("Houve um erro ao tentar modificar as informações da conta!");
                 resposta.text().then(texto => {
@@ -353,7 +351,8 @@ function modificar() {
         }).then(function (resposta) {
             if (resposta.ok) {
                 console.log(resposta);
-                confirm_modification()
+                window.alert("Faça login novamente para que possamos finzalizar as modificações na sua conta");
+                sair();
             } else {
                 console.log("Houve um erro ao tentar modificar as informações da conta!");
                 resposta.text().then(texto => {
@@ -369,7 +368,7 @@ function modificar() {
 function apagar() {
     var pergunta = window.confirm("Você certeza que deseja apagar sua conta?");
     if (pergunta == false) {
-        window.location = "/dashboard.html";
+        event.preventDefault();
     } else {
         var confirmacao = window.prompt("Digite confirar para deletar sua conta de forma permanente", "CONFIRMAR");
         if (confirmacao.toUpperCase().trim() == "CONFIRMAR") {
@@ -407,7 +406,7 @@ function apagar() {
                     console.log(resposta);
                     window.alert(`${nome_perfil} SUA CONTA FOI DELETADA COM SUCESSO`);
                     localStorage.clear();
-                    window.location = "login.html";
+                    window.location = "./login.html"
                 } else {
                     console.log("Houve um erro ao tentar deletar sua conta!");
                     resposta.text().then(texto => {
