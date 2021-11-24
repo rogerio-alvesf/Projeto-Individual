@@ -369,6 +369,14 @@ main .container{
     float: left;
 }
 
+.graph_pie{
+    width: 35%;
+    height: 25vh;
+    float: left;
+    margin-left: 10%;
+    margin-top: 04%;
+}
+
 .congration{
     display: none;
     flex-direction: column;
@@ -410,7 +418,7 @@ main .container{
     box-shadow: none;
 }
 
-main .icon{
+/*main .icon{
     width: 35%;
     height: 40vh;
     position: absolute;
@@ -424,7 +432,7 @@ main .icon{
 main .icon img{
     height: 100%;
     width: 55%;
-}
+}*/
 
 footer{
     display: flex;
@@ -436,6 +444,7 @@ footer{
     color: #FFFFFF;
     font-weight: bold;
     border-top: 0.2rem solid #26998E;
+    margin-top: 80vh;
 }
 
 footer .social-networks{

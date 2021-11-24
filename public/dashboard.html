@@ -76,7 +76,8 @@
         <div class="panel">
             <h2>Confira como está sua jornada</h2>
             <p>
-                <span id="sp_idealValue">Quantidade ideal de água que você deve tomar: <span id="id_idealValue" style="font-weight: bold;"></span></span>
+                <span id="sp_idealValue">Quantidade ideal de água que você deve tomar: <span id="id_idealValue"
+                        style="font-weight: bold;"></span></span>
                 <br>
                 Você já bebeu: <span id="sumValue" style="font-weight: bold;"></span>
                 <br>
@@ -91,8 +92,8 @@
                 Quantidade média de água que você já tomou: <span id="averageValue" style="font-weight: bold;"></span>
             </p>
         </div>
-        <div class="icon">
-            <img src="images/icon-glass-of-water.png">
+        <div class="graph_pie">
+            <canvas id="myChart_pie" style="width: 45%; height: 60%"></canvas>
         </div>
     </main>
     <footer>
@@ -164,6 +165,36 @@
         }
         var myChartLine = new Chart(document.getElementById("myChart"), config);
     }
+    
+function showchart_pie(){
+    const data_pie = {
+        labels: [
+            "Quanto você ja bebeu",
+            "Quanto Falta",
+        ],
+        datasets: [{
+            label: "Quanto falta",
+            data: [Number(sumValue.innerHTML), localStorage.getItem("VALOR IDEAL") - Number(sumValue.innerHTML)],
+            backgroundColor: [
+                "#26998E",
+                "#99bee5",
+            ],
+            hoverOffset: 4
+        }],options: {
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+            }
+    };
+    const config_pie = {
+        type: 'pie',
+        data: data_pie,
+    };
+    var myChartPie = new Chart(document.getElementById("myChart_pie"), config_pie)
+}
 </script>
 
 </html>

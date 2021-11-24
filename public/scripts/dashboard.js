@@ -101,6 +101,7 @@ fetch("/usuarios/buscar_estatisticas", {
                 quantidadeAtual = (json[0].sumValue);
             }
             porcentagemValorRestante = Number((quantidadeAtual * 100 / Number(localStorage.getItem('VALOR IDEAL'))).toFixed(2));
+            showchart_pie()
         });
     } else {
         console.log("Houve um erro ao buscar as estatisticas do usuario");
