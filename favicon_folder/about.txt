@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Zen Kaku Gothic Antique
+- Font Author: Copyright 2021 The Zen Project Authors (https://github.com/positype/Zen-Project)
+- Font Source: http://fonts.gstatic.com/s/zenkakugothicantique/v5/6qLQKYkHvh-nlUpKPAdoVFBtfxDzIn1eCzpB21-g3RKjc4d7.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
