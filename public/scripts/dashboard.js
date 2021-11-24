@@ -94,7 +94,7 @@ fetch("/usuarios/buscar_estatisticas", {
                 if (Number(localStorage.getItem("VALOR IDEAL") - (json[0].sumValue)) <= 0) {
                     remainingValue.innerHTML = "Você já bateu sua meta do dia";
                     congration.style.display = "flex";
-                    id_main.style.filter.blur = "0.1rem";
+                    id_main.style.filter.blur = "0.5rem";
                 } else {
                     remainingValue.innerHTML = Number(localStorage.getItem("VALOR IDEAL") - (json[0].sumValue));
                 }

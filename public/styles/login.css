@@ -93,7 +93,6 @@ main{
 }
 
 .form label input{
-    border: 1px solid #303030;
     border-radius: 4px;
     height: 2rem;
     text-align: center;
@@ -112,5 +111,13 @@ main{
     width: 75%;
     align-self: center;
     cursor: pointer;
+    color: #FFFFFF;
+}
+
+.form a{
+    color: #000000;
+}
+
+.form a:hover{
     color: #FFFFFF;
 }
