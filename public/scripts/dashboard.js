@@ -298,7 +298,8 @@ function modificar() {
             if (resposta.ok) {
                 console.log(resposta);
                 window.alert("Faça login novamente para que possamos finzalizar as modificações na sua conta");
-                sair();
+                localStorage.clear();
+                window.location = "login.html";
             } else {
                 console.log("Houve um erro ao tentar modificar as informações da conta!");
                 resposta.text().then(texto => {
@@ -327,7 +328,8 @@ function modificar() {
             if (resposta.ok) {
                 console.log(resposta);
                 window.alert("Faça login novamente para que possamos finzalizar as modificações na sua conta");
-                sair();
+                localStorage.clear();
+                window.location = "login.html";
             } else {
                 console.log("Houve um erro ao tentar modificar as informações da conta!");
                 resposta.text().then(texto => {
@@ -353,7 +355,8 @@ function modificar() {
             if (resposta.ok) {
                 console.log(resposta);
                 window.alert("Faça login novamente para que possamos finzalizar as modificações na sua conta");
-                sair();
+                localStorage.clear();
+                window.location = "login.html";
             } else {
                 console.log("Houve um erro ao tentar modificar as informações da conta!");
                 resposta.text().then(texto => {
@@ -407,7 +410,7 @@ function apagar() {
                     console.log(resposta);
                     window.alert(`${nome_perfil} SUA CONTA FOI DELETADA COM SUCESSO`);
                     localStorage.clear();
-                    window.location = "./login.html"
+                    window.location = "login.html";
                 } else {
                     console.log("Houve um erro ao tentar deletar sua conta!");
                     resposta.text().then(texto => {
