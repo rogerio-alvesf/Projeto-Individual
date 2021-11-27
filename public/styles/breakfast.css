@@ -35,6 +35,7 @@ header nav{
 header nav :hover{
     color: #005EBD;
     font-weight: bold;
+    border-bottom: 2px solid #005EBD;
 }
 
 header h1{
@@ -53,6 +54,7 @@ header .container{
 header .container :hover{
     color: #005EBD;
     font-weight: bold;
+    border-bottom: 2px solid #005EBD;
 }
 
 .banner{

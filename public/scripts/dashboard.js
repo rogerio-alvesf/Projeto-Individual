@@ -312,7 +312,7 @@ function modificar() {
     } else if (novo_email.value.indexOf("@") == -1 || novo_email.value.indexOf(".com") == -1) {
         window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
     } else if (novo_nome.value == "") {
-        novo_nome.value = nome;
+        novo_nome.value = nome_perfil;
         fetch("/usuarios/modificar", {
             method: "POST",
             headers: {
@@ -408,7 +408,7 @@ function apagar() {
             }).then(function (resposta) {
                 if (resposta.ok) {
                     console.log(resposta);
-                    window.alert(`${nome_perfil} SUA CONTA FOI DELETADA COM SUCESSO`);
+                    window.alert(`${nome_perfil}, sua conta foi deletada com sucesso`);
                     localStorage.clear();
                     window.location = "login.html";
                 } else {

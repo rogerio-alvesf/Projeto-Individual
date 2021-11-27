@@ -1,8 +1,8 @@
 var usuarioModel = require("../models/usuarioModel");
 
 function entrar(req, res) {
-    var email = req.body.email.trim().toLowerCase();
-    var senha = req.body.senha.trim();
+    var email = req.body.email;
+    var senha = req.body.senha;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");

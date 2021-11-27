@@ -6,8 +6,8 @@ function entrar() {
 
     var formulario = new URLSearchParams(new FormData(document.getElementById("form_login")));
 
-    var email = formulario.get("email");
-    var senha = formulario.get("senha");
+    var email = formulario.get("email").trim().toLowerCase();
+    var senha = formulario.get("senha").trim().toLowerCase();
 
     console.log("FORM LOGIN: ", email);
     console.log("FORM SENHA: ", senha);

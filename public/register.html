@@ -50,10 +50,10 @@
 
         var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastro")));
 
-        var nome = formulario.get("nome");
-        var email = formulario.get("email");
-        var senha = formulario.get("senha");
-        var confirmacaoSenha = formulario.get("confirmacao-senha");
+        var nome = formulario.get("nome").trim();
+        var email = formulario.get("email").trim().toLowerCase();
+        var senha = formulario.get("senha").trim().toLowerCase();
+        var confirmacaoSenha = formulario.get("confirmacao-senha").trim().toLowerCase();
 
         // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
         if (nome == "" || email == "" || senha == "" || confirmacaoSenha == "") {
