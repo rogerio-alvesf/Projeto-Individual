@@ -1,14 +1,5 @@
 var database = require("../database/config")
 
-function listar() {
-    console.log("INFORMAÇÕES DO USUÁRIO\n function listar()");
-    var instrucao = `
-        SELECT * FROM usuario;
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-
 function entrar(email, senha) {
     console.log("REALIZEI LOGIN\n function entrar(): ", email, senha)
     var instrucao = `
@@ -103,7 +94,6 @@ function buscar_quantidadeIdeal(id) {
 module.exports = {
     entrar,
     cadastrar,
-    listar,
     contabilizar,
     modificar,
     apagar_dados,

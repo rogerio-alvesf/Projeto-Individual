@@ -20,13 +20,18 @@ fetch("/usuarios/buscar_informacoes", {
     if (resposta.ok) {
         resposta.json().then(json => {
             console.log(json);
-            dados = (json);
-            for (var contador = 0; contador < dados.length; contador++) {
-                periodo.push(dados[contador].tempo);
-                valor.push(dados[contador].volume);
+            for (var contador = 0; contador < json.length; contador++) {
+                periodo.push(json[contador].tempo);
+                valor.push(json[contador].volume);
             }
-            amountValue.innerHTML = Number(dados.length);
-            showchart_line();
+            if(json.length == 0){
+                amountValue.innerHTML = "0";
+                showchart_line();
+            }else{
+                amountValue.innerHTML = Number(json.length);
+                showchart_line();
+            }
+
         });
     } else {
         console.log("Houve um erro ao buscar as informações do usuario");

@@ -38,7 +38,7 @@
             <span>Qual será o seu novo email:</span><input type="text" id="novo_email">
             <span><button onclick="modificar()">Atualizar Credenciais</button>
                 <button class="delete" onclick="apagar()">Deletar Conta</button></span>
-            </div>
+        </div>
         <div onclick="close_manage_account_option()" class="bt-close">
             <img src="images/button_close.png">
         </div>
@@ -136,10 +136,6 @@
                 ]
             },
             options: {
-                parsing: {
-                    xAxisKey: 'volume',
-                    yAxisKey: 'tempo',
-                },
                 plugins: {
                     legend: {
                         display: false
@@ -167,36 +163,36 @@
         }
         var myChartLine = new Chart(document.getElementById("myChart"), config);
     }
-    
-function showchart_pie(){
-    const data_pie = {
-        labels: [
-            "Quanto você ja bebeu",
-            "Quanto Falta",
-        ],
-        datasets: [{
-            label: "Quanto falta",
-            data: [Number(sumValue.innerHTML), localStorage.getItem("VALOR IDEAL") - Number(sumValue.innerHTML)],
-            backgroundColor: [
-                "#26998E",
-                "#99bee5",
+
+    function showchart_pie() {
+        const data_pie = {
+            labels: [
+                "Quanto você ja bebeu",
+                "Quanto Falta",
             ],
-            hoverOffset: 4
-        }],options: {
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-            }
-    };
-    const config_pie = {
-        type: 'pie',
-        data: data_pie,
-    };
-    var myChartPie = new Chart(document.getElementById("myChart_pie"), config_pie)
-}
+            datasets: [{
+                label: "Quanto falta",
+                data: [Number(sumValue.innerHTML), localStorage.getItem("VALOR IDEAL") - Number(sumValue.innerHTML)],
+                backgroundColor: [
+                    "#26998E",
+                    "#99bee5",
+                ],
+                hoverOffset: 4
+            }], options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                maintainAspectRatio: false,
+            },
+        };
+        const config_pie = {
+            type: 'pie',
+            data: data_pie,
+        };
+        var myChartPie = new Chart(document.getElementById("myChart_pie"), config_pie)
+    }
 </script>
 
 </html>
