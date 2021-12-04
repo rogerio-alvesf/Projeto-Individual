@@ -34,7 +34,7 @@ fetch("/usuarios/buscar_informacoes", {
 
         });
     } else {
-        console.log("Houve um erro ao buscar as informações do usuario");
+        console.log("Houve um erro ao buscar as informações do usuário");
         resposta.text().then(texto => {
             console.error(texto);
         });
@@ -63,7 +63,7 @@ fetch("/usuarios/buscar_quantidadeIdeal", {
 
         });
     } else {
-        console.log("Houve um erro ao buscar as quantidade do usuario");
+        console.log("Houve um erro ao buscar as quantidades do usuário");
         resposta.text().then(texto => {
             console.error(texto);
         });
@@ -109,7 +109,7 @@ fetch("/usuarios/buscar_estatisticas", {
             showchart_pie()
         });
     } else {
-        console.log("Houve um erro ao buscar as estatisticas do usuario");
+        console.log("Houve um erro ao buscar as estatisticas do usuário");
         resposta.text().then(texto => {
             console.error(texto);
         });
@@ -230,7 +230,7 @@ function save_value() {
 
         } else {
 
-            console.log("Houve um erro ao armazenar o valor ideal do usuario");
+            console.log("Houve um erro ao armazenar o valor ideal do usuário");
 
             resposta.text().then(texto => {
                 console.error(texto);

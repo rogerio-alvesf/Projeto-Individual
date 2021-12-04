@@ -3,7 +3,7 @@ var database = require("../database/config")
 function entrar(email, senha) {
     console.log("REALIZEI LOGIN\n function entrar(): ", email, senha)
     var instrucao = `
-        SELECT * FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+        SELECT * FROM usuario WHERE email = '${email}' AND sha2('${senha}', 224);
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -12,7 +12,8 @@ function entrar(email, senha) {
 function cadastrar(nome, email, senha) {
     console.log("CADASTREI UM USUÁRIO\n function cadastrar():", nome, email, senha);
     var instrucao = `
-        INSERT INTO usuario (nome, email, senha) VALUES ('${nome}', '${email}', '${senha}');
+        INSERT INTO usuario (nome, email, senha) VALUES ('${nome}', '${email}', sha2('${senha}', 224));
+
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

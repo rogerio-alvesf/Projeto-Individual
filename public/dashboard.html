@@ -121,16 +121,15 @@
     sp_nick_usuario.innerHTML = localStorage.getItem("NOME");
     function showchart_line() {
         const config = {
-            type: "line", // tipo do gráfico
-            data: { // objeto que vai conter os dados do gráfico
+            type: "line",
+            data: {
                 labels: periodo,
-                //labels: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23.00"], // labels (rótulos) que serão identificados os nossos dados 
-                datasets: [ // datasets (conjunto de dados)
+                datasets: [
                     {
-                        label: "Quantidade de água(ml)", // irá conter o rótulo principal do nosso gráfico
-                        data: valor, // os dados referentes aqueles rótulos
-                        backgroundColor: "#26998E", // cor das "bolinhas" do gráfico
-                        borderColor: "#26998E", // cor da "linha" do gráfico
+                        label: "Quantidade de água(ml)",
+                        data: valor,
+                        backgroundColor: "#26998E",
+                        borderColor: "#26998E",
                         tension: 0.5,
                     }
                 ]
